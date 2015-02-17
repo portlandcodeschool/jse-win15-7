@@ -23,7 +23,7 @@ var MemoryGame = (function() {
 	DummyGameCtor.prototype.remaining	= function() {}
 	DummyGameCtor.prototype.reset 		= function() {}
 	DummyGameCtor.prototype.faceupWhere	= function() {}
-	DummyGameCtor.prototype.faceupValue = function() {}
+	DummyGameCtor.prototype.faceupValue	= function() {}
 
 	return DummyGameCtor;
 })();
