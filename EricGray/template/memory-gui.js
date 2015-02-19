@@ -66,7 +66,8 @@ var MemoryGUI = (function () {
 						};
 						for (cards = 0; cards<(game.size()); cards++){
 							if (game.remaining().indexOf(cards) < 0){
-								document.getElementById(cards).className = 'hidden'
+								document.getElementById(cards).className = 'hidden';
+								document.getElementById(cards).innerHTML = '';
 							}
 						}
 						
