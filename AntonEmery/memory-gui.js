@@ -23,7 +23,8 @@ var MemoryGUI = (function () {
 
 	function MemoryGUI(container, game) {
 		//render game inside id memorygame in the html
-		//
+		var game = new memorygame; //who knows?
+		game.game.size();
 	}
 
 	return GuiCtor;
