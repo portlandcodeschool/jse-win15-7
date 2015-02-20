@@ -22,7 +22,7 @@ var MemoryGUI = (function() {
 			var cardsDiv = document.createElement('div');
 			cardsDiv.setAttribute('id', 'cardSet');
 
-			for (c=0; c < cardNums; c++) {
+			for (var c = 0; c < cardNums; c++) {
 				thisCard = game.valueAt(c);
 				var theCardID = thisCard[2];
 				var newCard = document.createElement('div');
@@ -41,7 +41,7 @@ var MemoryGUI = (function() {
 					console.log('flipped card' + liftCard);
 					this.classList.toggle('face-down');
 
-				}
+				};
 			}
 			container.appendChild(cardsDiv);
 		};
@@ -85,6 +85,7 @@ var MemoryGUI = (function() {
 		console.log('this is the' + resetButton);
 
 		resetButton.onclick = function() {
+			container.innerHTML = '';
 			console.log('reset clicked');
 			render();
 		};
