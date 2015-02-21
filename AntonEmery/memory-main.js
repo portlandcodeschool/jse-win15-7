@@ -5,7 +5,11 @@ function go() {
 	cards = new MemoryCards();//<--maybe add argument for some card sets
 	game  = new MemoryGame(cards);
 	gui   = new MemoryGUI('memorygame',game);
-	game.gui(gui); // link game to gui
+	//game.gui(gui); // link game to gui  ???
+
+	//working on render cards
+	$('#memorygame').append('<p>Test</p>');
+
 }
 
 window.addEventListener("load",go);
