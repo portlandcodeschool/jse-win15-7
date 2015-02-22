@@ -39,20 +39,21 @@ var MemoryGame = (function() {
 		// New methods:
 		var _gui = null; //private variable
 
-		var gui = function(useGui) {
+		this.gui = function(useGui) {
 			if (useGui === undefined) //no parameter; act as getter:
 				return _gui;
 			// else act as setter:
 			_gui = useGui;
 		}
 
-		var size = function() {  // getter function returns total number of cards in current game
-		return cardset.values().length;
+		this.size = function() {  // getter function returns total number of cards in current game
+		return slots.length;
 		}  
 
 		
 
 		var lift = function(here) {//--> display string
+			
 			if (!isValid(here,length)) return false;
 			if (!remainsAt(here)) return false;
 			if (there===here) return false;
@@ -65,6 +66,7 @@ var MemoryGame = (function() {
 			} else {
 				// check match with face-up
 				if (cardset.match(valHere,valueAt(there))) {
+
 					// match; remove both:
 					removeAt(here);
 					removeAt(there);
