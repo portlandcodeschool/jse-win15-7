@@ -83,6 +83,8 @@ var MemoryGame = (function() {
 		this.faceupValue = faceupValue;
 		this.faceupWhere = faceupWhere;
 		this.remaining = remaining;
+		this.gui = gui;
+		this.size = size;
 	}//end ctor
 
 	// Private Functions shared by all boards:
