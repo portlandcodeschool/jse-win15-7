@@ -81,3 +81,80 @@ var AlphabetCards = (function() {
 	return Ctor;
 
 })();
+
+var Card = (function(){
+
+	// Ctor:
+	function Card(id) {
+		this.id = function () {
+			return id;
+		}
+	}
+
+	function isInt(n) { return ((n%1 === 0) && (typeof n === 'number')); }
+    function inRange(n,a,z) { return ((n >= a) && (n <= z));}
+    
+	// Instance methods (attach these to Card's prototype):
+
+    Card.prototype.rank = function() {
+        return Math.floor(this.id() / 4) + 1;
+    }
+
+    Card.prototype.suit = function() {
+        return (this.id() % 4) + 1;
+    }
+
+    Card.prototype.color = function() { // -->"red,"black",NaN
+        var b = Math.floor(((this.id() / 2) % 2));
+        return b?'black':'red';
+    }
+
+    Card.prototype.cardName = function() { //--> string, NaN
+        return this.constructor.rankNames()[this.rank() - 1] + ' of ' + this.constructor.suitNames()[this.suit() - 1];
+    }
+
+    Card.prototype.isValid = function () {
+
+    	return ((inRange(this.id(),0,(this.constructor.numCards() - 1))) && (isInt(this.id())));
+    }
+
+
+
+	// Private data:
+	var rankNames = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"];
+	var suitNames = ["Hearts", "Diamonds", "Spades", "Clubs"];
+
+
+	var fullSet = [];
+	for (var i = 0; i < 52; i++) { fullSet.push(new Card(i)); }
+	// loop to fill fullSet with 52 instances...
+
+
+	// Class methods:
+
+	Card.isCard = function(thing) {// return Boolean
+		return ((thing instanceof Card) && thing.isValid());
+		//...
+	}
+
+	Card.fullSet = function() {//return copy of private array
+		return fullSet.slice(); 
+	}
+
+	Card.rankNames = function() {
+		return rankNames.slice(); 
+	}
+
+	Card.suitNames = function() {
+		return suitNames.slice();
+	}
+
+	Card.numCards = function() {
+		return 52;
+	}
+
+
+	// Return constructor:
+	return Card;
+
+})(); //end superclass IIFE
