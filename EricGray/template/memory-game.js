@@ -3,7 +3,8 @@ var MemoryGame = (function() {
 		//...
 		var slots,
 			length,
-			there;
+			there,
+			_gui;
 
 		var reset = function() {
 		
@@ -53,9 +54,14 @@ var MemoryGame = (function() {
 		}
 
 /*!*/		var gui = function(useGui) {
+				if (useGui === undefined) {
+				return _gui;
+			} else if (typeof useGui === 'object') {
+				_gui = useGui;
+			}
 			//if (useGui===undefined) {return previous object}
 			//else if (useGui===object) {remember useGui}
-		}
+		}  
 
 		var remaining = function() {
 			return Object.keys(slots).map(Number);
@@ -66,8 +72,15 @@ var MemoryGame = (function() {
 
 		}
 
+		var showGui = function(){
+			console.log(_gui);
+			console.log(slots);
+		}
 
 		var lift = function(here) {
+			if (_gui){
+				_gui.show(here.id, valueAt(Number(here.id)).name);
+			};
 			if (!isValid(here, length)) return false;
 			if (!remainsAt(here)) return false;
 			if (there===here) return false;
@@ -75,7 +88,6 @@ var MemoryGame = (function() {
 			var valHere = valueAt(here);
 			if (there === false) {
 				there = here;
-				console.log(here);
 			} else {
 				if (cardset.match(valHere,valueAt(there))) {
 					removeAt(here);
@@ -83,7 +95,7 @@ var MemoryGame = (function() {
 					console.log("Match!")
 				}
 				there = false;
-			}
+			} 
 			return cardset.display(valHere);
 		
 
@@ -109,6 +121,8 @@ var MemoryGame = (function() {
 	this.faceupWhere = faceupWhere;
 	this.remaining = remaining;
 	this.size = size;
+	this.gui = gui;
+	this.showGui = showGui;
 
 
 	//...
