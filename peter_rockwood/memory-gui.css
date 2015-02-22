@@ -1,0 +1,63 @@
+/* CSS for GUI...*/
+
+#memorygame {
+	display: inline-block;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+}
+
+
+td {
+	min-width: 100px;
+	min-height: 100px;
+	width: 100px;
+	height: 100px;
+	border-style: dotted;
+	border-width: 1px;
+	border-color: black;
+	text-align: center;
+	
+	font-size: 200%;
+	font-family: Arial;
+	line-height: 50%;
+}
+
+.up{
+	background-color: #f0c0c0;
+}
+
+.down{
+	background-color: #f0f0f0;
+	color:#f0f0f1;
+}
+
+.gone{
+	background-color: white;
+	color: white;
+	border-color: white
+}
+
+#reset{
+	font-family: Arial;	
+}
+
+h1 {
+	position: absolute;
+	display: inline-block;
+	color: #9c8c8c;
+	font-size: 280%;
+	font-family: Arial;
+	top: 0%;
+	left: 30%;
+
+
+}
+
+
+
+
+
+
+
+
