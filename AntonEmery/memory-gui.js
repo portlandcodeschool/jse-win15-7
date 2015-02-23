@@ -12,8 +12,9 @@ var MemoryGUI = (function () {
 		this.show = function(where, value) {
 			//change card css to face up. where parameter equals card id 
 			$('#' + where).toggleClass('face-up face-down');
-			var cardFaceUp = game.valueAt(value);	
-			console.log(cardFaceUp);
+			var cardFaceUp = game.valueAt(where);	
+			value = cardFaceUp[0]
+			console.log(value);
 		}
 		this.removeSoon = function(whereArr) {
 			//make card hide, facedown
