@@ -10,30 +10,71 @@ var MemoryGUI = (function () {
 		} else { return {}};
 
 		// public instance methods:
-		this.reset = function() {
+		function reset() {
 			//...
+			while (cont.firstChild) { //from stack overflow- clear DOM
+    			cont.removeChild(cont.firstChild);
+			}
+			game.reset(); //reset game state
+			renderBoard(); //re-render
+			alert('board has been reset!');
 		}
-		this.show = function(where,what) {
+		function show(id) { //only need one parameter because board[id] and td =id  are the same in the way I ended up implimenting it
 			//...
-		}
-		this.removeSoon = function(whereArr) {
-			//...
-		}
-		this.hideSoon = function(whereArr) {
-			//...
-		}
-		function lift(evt) {
-			console.log(game.lift(this.id));
-		}
-
-		function renderCard_face(gameID) {
-	        var img = document.createElement('img');
-	        src = 'images/SVG-cards-1.3/' + game.getImg(gameID) + '.svg';
+			var target = document.getElementById(id);
+			target.innerHTML = "";
+			var img = document.createElement('img');
+	        src = 'images/SVG-cards-1.3/' + game.getImg(id) + '.svg';
 	        img.src = src;
 	        img.setAttribute('width',65);
-	        return img;
-   		}
-    
+	        target.innerHTML = ""
+	        target.appendChild(img);
+		}
+
+		function removeSoon(whereArr) {
+			//...
+			window.setTimeout(function() {
+				whereArr.forEach(function(x){
+					document.getElementById(x).classList.toggle('invisible');
+				});
+			}, 1000);
+		}
+		function hideSoon(whereArr) {
+			//...
+			window.setTimeout(function() {
+				whereArr.forEach(function(x){
+					document.getElementById(x).innerHTML = "";
+					document.getElementById(x).appendChild(renderCard_back());
+				});
+			}, 1000);			
+		}
+		function lift(evt) {
+			var result = game.lift(this.id); //[match?, where, last faceup card (if any)]
+			if (result[0] == 'match') {
+				console.log('Match! - Making these invisible!\nnew:' + this.id + '\nold:' + result[2]);
+				show(this.id);
+				removeSoon([result[2],this.id]); //[old, new]
+				if (game.remaining().length == 0) {
+					alert('you won!!!!');
+					reset();
+				}
+			} else if (result[0] == 'no match') {
+				console.log('No match! - Face downing thse cards\nnew:' + this.id + '\nold:' + result[2]);
+				show(this.id);
+				hideSoon([result[2],this.id]); //[old, new]
+			} else if (result !== false) {
+				show(this.id);
+			}
+		}
+
+    	
+    	function renderCard_back() {
+    		var img = document.createElement('img');
+    		src = 'images/SVG-cards-1.3/facedown.jpg'
+    		img.src = src;
+    		img.setAttribute('width',65);
+    		return img;
+    	}
 
 		function renderBoard() {
 			
@@ -54,7 +95,7 @@ var MemoryGUI = (function () {
 					var id = counter;
 					td.setAttribute('id',id);
 					td.classList.add('cell');
-					td.appendChild(renderCard_face(id));
+					td.appendChild(renderCard_back());
 					td.onclick = lift;
 					tr.appendChild(td);
 					counter++;
@@ -64,9 +105,18 @@ var MemoryGUI = (function () {
 			cont.appendChild(table);
 		}
 		// Do some initial setup and rendering...
-		renderBoard();
 
+		this.renderBoard = renderBoard;
+		this.renderCard_back = renderCard_back;
+		this.reset = reset;
+		this.show = show;
+		this.removeSoon = removeSoon;
+		this.hideSoon = hideSoon;
+
+		document.getElementById('reset').onclick = reset;
+		renderBoard();
 	}
+
 
 	return GuiCtor;
 })();

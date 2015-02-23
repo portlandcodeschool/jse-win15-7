@@ -9,11 +9,15 @@ var MemoryGame = (function() {
 		var gui = {};
 
 		for (var i = 0; i < cardset.len(); i++) {
-			board.push([i,0,0]); //cardset.index, faceup, removed
+			board.push([i,0,0]); //[cardset.index, faceup, removed] = states are ONLY tracked here in entire game.
 		}
 
 		this.size = function() {
 			return board.length;
+		}
+
+		this.values = function() {
+			return board.slice();
 		}
 
 		this.gui = function(useGui) {
@@ -62,7 +66,7 @@ var MemoryGame = (function() {
 				if (faceup == null) {
 					faceup = where;
 					board[where][1] = 1;
-					return cardset.display(board[where][0]);
+					return [cardset.display(board[where][0]),where,null];
 				} else {
 					var match = cardset.match(board[where][0],board[faceup][0]);
 					if (match) {
@@ -70,13 +74,15 @@ var MemoryGame = (function() {
 						board[where][1] = 0;
 						board[faceup][2] = 1;
 						board[where][2] = 1;
+						var result = ['match',where,faceup];
 						faceup = null;
-						return 'Match!';
+						return result; //match
 					} else {
 						board[where][1] = 0;
 						board[faceup][1] = 0;
+						var result = ['no match',where,faceup];
 						faceup = null;
-						return 'NO match!';
+						return  result; //no match
 					}
 
 				}
