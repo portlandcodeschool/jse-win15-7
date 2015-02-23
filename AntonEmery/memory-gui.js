@@ -27,7 +27,7 @@ var MemoryGUI = (function () {
 			//call the lift method
 			game.lift(parseInt(this.id));
 			//call show function
-			invokeShow(this.id, );
+			invokeShow(this.id);
 		}
 
 		var callReset = this.reset;
