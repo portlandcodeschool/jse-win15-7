@@ -2,10 +2,20 @@ var MemoryGUI = (function () {
 
 	//...
 
-	function GuiCtor(container,game) {
+	function MemoryGUI(container,game) {
+        if (typeof container === 'string') {
+            var $container = $('#' + container);
+        }
+        if (!($container instanceof HTMLElement)) {
+            return {};
+        }
+        this.$el() = function() {
+            return $container;
+        };
 
 		// public instance methods:
 		this.reset = function() {
+
 			//...
 		}
 		this.show = function(where,what) {
@@ -21,5 +31,5 @@ var MemoryGUI = (function () {
 		// Do some initial setup and rendering...
 	}
 
-	return GuiCtor;
+	return MemoryGUI;
 })();
