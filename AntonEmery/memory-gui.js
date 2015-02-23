@@ -12,9 +12,8 @@ var MemoryGUI = (function () {
 		this.show = function(where, value) {
 			//change card css to face up. where parameter equals card id 
 			$('#' + where).toggleClass('face-up face-down');
-			var cardFaceUp = game.valueAt(where);	
-			value = cardFaceUp[0]
-			console.log(value);
+			value[0];    //animal name index of card
+			console.log(value[0]);
 		}
 		this.removeSoon = function(whereArr) {
 			//make card hide, facedown
@@ -27,7 +26,7 @@ var MemoryGUI = (function () {
 			//call the lift method
 			game.lift(parseInt(this.id));
 			//call show function
-			invokeShow(this.id);
+			invokeShow(this.id, game.valueAt(this.id));  //second argument is the array that contains card name and number
 		}
 
 		var callReset = this.reset;
