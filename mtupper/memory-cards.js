@@ -2,8 +2,8 @@
  * Created by mtupper on 2/22/15.
  */
 
-var MarioCards = (function() {
-	function MarioCards() {
+var MemoryCards = (function() {
+	function MemoryCards() {
 
         var cards = MarioCard.fullSet();
 
@@ -17,5 +17,5 @@ var MarioCards = (function() {
             return val[0];
         };
     }
-	return MarioCards;
+	return MemoryCards;
 })();
