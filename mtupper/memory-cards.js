@@ -2,7 +2,7 @@
 
 var MarioCards = (function() {
 	function MarioCards() {
-        // Card values:
+        // MarioCard values:
         var superMarioChars = [
             ['mario', 1], ['luigi', 1],
             ['wario', 2], ['vuigi', 2],
@@ -13,7 +13,7 @@ var MarioCards = (function() {
             return superMarioChars.slice();
         };
         this.match = function (pair1, pair2) {
-            return (pair1[1] === pait2[1]);
+            return (pair1[1] === pair2[1]);
         };
         this.display = function (val) {
             return val[0];
