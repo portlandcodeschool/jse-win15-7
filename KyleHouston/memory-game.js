@@ -56,6 +56,8 @@ var MemoryGame = (function() {
 					removeAt(here);
 					removeAt(there);
 					//optional: report match
+					var whereArr = [there,here];
+					gui.removeSoon(whereArr);
 					console.log("Match!")
 				}
 				//either way, turn face-up to face-down:
@@ -111,6 +113,7 @@ var MemoryGame = (function() {
 		    array[i] = temp;
  		}
 	}
+
 
 	return GameCtor;
 })();
