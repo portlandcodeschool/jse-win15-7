@@ -1,16 +1,14 @@
-// See cardset-example.js for examples
+/**
+ * Created by mtupper on 2/22/15.
+ */
 
 var MarioCards = (function() {
 	function MarioCards() {
-        // MarioCard values:
-        var superMarioChars = [
-            ['mario', 1], ['luigi', 1],
-            ['wario', 2], ['vuigi', 2],
-            ['mariojr', 3], ['luigijr', 3],
-            ['cloudbee', 4], ['ghostface', 4]
-        ];
+
+        var cards = MarioCard.fullSet();
+
         this.values = function () {
-            return superMarioChars.slice();
+            return cards.slice();
         };
         this.match = function (pair1, pair2) {
             return (pair1[1] === pair2[1]);

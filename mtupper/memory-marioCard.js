@@ -1,11 +1,24 @@
 /**
- * Created by michaelt on 2/22/15.
+ * Created by mtupper on 2/22/15.
  */
+
 var MarioCard = (function() {
 
     function MarioCard(id) {
         this.id = id;
     }
+
+    /*
+
+     // MarioCard values:
+     var superMarioChars = [
+     ['mario', 1], ['luigi', 1],
+     ['wario', 2], ['vuigi', 2],
+     ['mariojr', 3], ['luigijr', 3],
+     ['cloudbee', 4], ['ghostface', 4]
+     ];
+
+     */
 
     // Instance Methods
 
