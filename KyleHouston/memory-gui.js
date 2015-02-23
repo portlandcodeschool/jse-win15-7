@@ -57,7 +57,7 @@ var MemoryGUI = (function () {
 			var $newRow = $('<tr>');
 			$table.append($newRow);
 			for (var c = 0; c < numCols; c++) {
-				if (cell > game.size()) {
+				if (cell >= game.size()) {
 					break;
 				}
 				var $newCell = $('<td>', {id:cell});
