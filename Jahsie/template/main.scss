@@ -55,7 +55,7 @@ h1 {
 	font-size: 1rem;
 	vertical-align: bottom;
 /*	FIX THIS!*/
-	margin-top: 100%;
+/*	margin-top: 100%;*/
 	position: relative;
 	bottom: 0;
 }
@@ -102,23 +102,40 @@ img {
 }
 
 .cardDiv {
-	background-image: url(../img/Back.png);
+
 	background-size: contain;
 	/*background-repeat: none;*/
 	display: inline-block;
 	width: 20%;
 }
 
-.face-down img {
+
+
+.face-down {
+	background-image: url(../img/Back.png);
+	img {
 	visibility: hidden;
+	}
 }
 
 .face-up {
 
 }
 
+#match {
+	padding: 20px 0px;
+	color: gold;
+}
+
+.showCelebration {
+	visibility: hidden;
+}
+
 .matched {
-	display: none;
+	background-image: url(../img/matched.png);
+	img {
+		visibility: hidden;
+	}
 }
 
 @media screen and (max-width: 900px) {
