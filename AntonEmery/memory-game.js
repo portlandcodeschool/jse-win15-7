@@ -87,6 +87,8 @@ var MemoryGame = (function() {
 		this.remaining = remaining;
 		this.gui = gui;
 		this.size = size;
+		this.valueAt = valueAt;
+
 	}//end ctor
 
 	// Private Functions shared by all boards:

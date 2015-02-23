@@ -7,10 +7,13 @@ var MemoryGUI = (function () {
 		// public instance methods:
 		this.reset = function() {
 			//style card face down
-			console.log('button clicked');
+			console.log('Game reset!');
 		}
-		this.show = function(where,what) {
-			//...
+		this.show = function(where, value) {
+			//change card css to face up. where parameter equals card id 
+			$('#' + where).toggleClass('face-up face-down');
+			var cardFaceUp = game.valueAt(value);	
+			console.log(cardFaceUp);
 		}
 		this.removeSoon = function(whereArr) {
 			//make card hide, facedown
@@ -20,12 +23,14 @@ var MemoryGUI = (function () {
 		}
 
 		var clicked = function() {
-			//console.log(this.id);
-			//need to call the lift method
+			//call the lift method
 			game.lift(parseInt(this.id));
+			//call show function
+			invokeShow(this.id, );
 		}
 
-		var invokeReset = this.reset;
+		var callReset = this.reset;
+		var invokeShow = this.show;
 
 		// Do some initial setup and rendering...
 		function render() {
@@ -39,6 +44,7 @@ var MemoryGUI = (function () {
 				grid.appendChild(list);
 				list.onclick = clicked;
 				list.classList.add('face-down');
+
 			} 
 			container.appendChild(grid);
 
@@ -47,7 +53,7 @@ var MemoryGUI = (function () {
 			var text = document.createTextNode('Reset');
 			footer.appendChild(button);
 			button.appendChild(text);
-			button.onclick = invokeReset;
+			button.onclick = callReset;
 
 
 		}
