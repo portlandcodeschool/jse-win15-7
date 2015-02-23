@@ -16,10 +16,10 @@ var MemoryGUI = (function () {
     			cont.removeChild(cont.firstChild);
 			}
 			game.reset(); //reset game state
-			renderBoard(); //re-render
+			renderBoard(); //re-render board
 			alert('board has been reset!');
 		}
-		function show(id) { //only need one parameter because board[id] and td =id  are the same in the way I ended up implimenting it
+		function show(id) { //only need one parameter because board[id] and td =id  are the same in the way I ended up implementing it
 			//...
 			var target = document.getElementById(id);
 			target.innerHTML = "";
@@ -54,12 +54,12 @@ var MemoryGUI = (function () {
 				console.log('Match! - Making these invisible!\nnew:' + this.id + '\nold:' + result[2]);
 				show(this.id);
 				removeSoon([result[2],this.id]); //[old, new]
-				if (game.remaining().length == 0) {
+				if (game.remaining().length == 0) { //Check if this is last match
 					alert('you won!!!!');
 					reset();
 				}
 			} else if (result[0] == 'no match') {
-				console.log('No match! - Face downing thse cards\nnew:' + this.id + '\nold:' + result[2]);
+				console.log('No match! - Facing these cards down\nnew:' + this.id + '\nold:' + result[2]);
 				show(this.id);
 				hideSoon([result[2],this.id]); //[old, new]
 			} else if (result !== false) {
