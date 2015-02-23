@@ -9,45 +9,57 @@ html {
 @media screen and (min-width: 1200px) {
   html {
     font-size: 18px; } }
-/*@media screen and (min-width: 900px) {
- 	#memorygame { 	
- 	transform: translateY(-50%);
-	max-width: 1300px;
-	text-align: center;
-	position: relative;
-	top: 50%;
-	}
-}
-*/
 body {
   font-family: 'Lato', sans-serif;
-  color: grey;
-  margin: 0px;
-  height: 100%; }
+  color: grey; }
+  body p {
+    text-align: center;
+    font-size: .85rem; }
+
+#main {
+  /*	width: 90%;
+  	height: 90%;
+  	overflow: auto;
+  	margin: auto;
+  	position: absolute;
+  	top: 0; left: 0; bottom: 0; right: 0;
+  */
+  /*top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);*/ }
 
 h1 {
-  font-weight: 900; }
+  font-weight: 900;
+  text-align: center; }
 
 #intro {
+  position: relative;
   box-sizing: border-box;
   display: inline-block;
   width: 20%;
   float: left;
   text-align: center;
-  height: 100%;
-  padding: 3% 0px 0px 3%; }
+  padding: 3% 0px 0px 3%;
+  height: 100%; }
+
+.guts {
+  position: absolute;
+  bottom: 2px;
+  display: block;
+  margin: 0px auto;
+  width: 80%; }
 
 .quote {
   font-style: italic;
-  font-size: 1rem;
-  vertical-align: bottom;
-  /*	FIX THIS!*/
-  /*	margin-top: 100%;*/
-  position: relative;
-  bottom: 0; }
+  vertical-align: bottom; }
+
+#signature {
+  margin: 50px 0px; }
 
 #memorygame {
   height: 100%;
+  position: relative;
   box-sizing: border-box;
   display: inline-block;
   float: right;
@@ -73,11 +85,12 @@ button:hover {
   outline-offset: -10px; }
 
 img {
-  /*	max-height: 100%;*/
   max-width: 100%; }
 
-.cardset {
-  width: 100%; }
+#cardSet {
+  width: 100%;
+  /*	position: absolute;*/
+  top: 50%; }
 
 .cardDiv {
   background-size: contain;
@@ -95,13 +108,14 @@ img {
   color: gold; }
 
 .showCelebration {
-  visibility: hidden; }
+  display: none; }
 
 .matched {
   background-image: url(../img/matched.png); }
   .matched img {
     visibility: hidden; }
 
+/*Media Queries*/
 @media screen and (max-width: 900px) {
   #intro {
     display: block;
@@ -118,4 +132,7 @@ img {
     top: 0px; }
 
   .cardDiv {
-    width: 20%; } }
+    width: 20%; }
+
+  #alerts {
+    display: none; } }

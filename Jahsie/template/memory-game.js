@@ -66,6 +66,13 @@ var MemoryGame = (function() {
 				_gui.hide(here);
 				there = false;
 			}
+
+			var celebrate = remaining();
+			if (celebrate.length === 0) {
+				console.log('hi!');
+				_gui.showCelebrateMessage();
+			}
+
 			return cardset.display(valHere); 
 		}
 
@@ -81,9 +88,6 @@ var MemoryGame = (function() {
 			return length;
 		}
 
-		// var test = function() {
-		// 	console.log("BUTTS BUTTS BUTTS!")
-		// }
 
 
 		// Make some functions public as instance methods:

@@ -16,10 +16,12 @@ var MemoryGUI = (function() {
 		// var introT = document.getElementById('intro');
 		// console.log(introT);
 
+
 		var render = function() {
 			var cardsDiv = document.createElement('div');
 			cardsDiv.setAttribute('id', 'cardSet');
-
+			game.reset();
+			
 			for (var c = 0; c < cardNums; c++) {
 				thisCard = game.valueAt(c);
 				var theCardID = thisCard[2];
@@ -54,7 +56,6 @@ var MemoryGUI = (function() {
 		var hide = function(here) {
 			var toHide = function() {
 				var cardToHide1 = document.getElementById(here);
-				console.log("cardToHide1 = " +cardToHide1);
 				cardToHide1.classList.toggle('face-down');				
 			}
 			window.setTimeout(toHide, 1500); 
@@ -67,29 +68,39 @@ var MemoryGUI = (function() {
 			}
 			toggleMessage();
 			window.setTimeout(toggleMessage, 2500);
-		}				
+		}	
+
+		var showCelebrateMessage = function() {
+			var celebrateMessage = document.getElementById('win');
+			var toggleMessage = function() {
+				celebrateMessage.classList.toggle('showCelebration');
+			}
+			toggleMessage();
+		}						
 
 		var matchSet = function(here, there) {
 			var here = document.getElementById(here);
-			console.log(here);
 			var there = document.getElementById(there);
-			console.log(there);
 			here.className = "cardDiv matched";
 			there.className = "cardDiv matched";
 		}
 
-		resetButton.onclick = function() {
-			container.innerHTML = '';
-			render();
-		};
 
+		this.showCelebrateMessage = showCelebrateMessage;
 		this.showMatchMessage = showMatchMessage;
 		this.show = show;
 		this.hide = hide;
 		this.render = render;
 		this.matchSet = matchSet;
+
+		resetButton.onclick = function() {
+			console.log("buut");
+			container.innerHTML = '';
+			render();
+		};
 		// Do some initial setup and rendering...
 		render();
+
 	}
 
 	return GuiCtor;
