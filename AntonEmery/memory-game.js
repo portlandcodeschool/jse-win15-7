@@ -39,14 +39,14 @@ var MemoryGame = (function() {
 		// New methods:
 		var _gui = null; //private variable
 
-		this.gui = function(useGui) {
+		var gui = function(useGui) {
 			if (useGui === undefined) //no parameter; act as getter:
 				return _gui;
 			// else act as setter:
 			_gui = useGui;
 		}
 
-		this.size = function() {  // getter function returns total number of cards in current game
+		var size = function() {  // getter function returns total number of cards in current game
 		return slots.length;
 		}  
 
