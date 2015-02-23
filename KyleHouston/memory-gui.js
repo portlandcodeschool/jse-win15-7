@@ -17,7 +17,7 @@ var MemoryGUI = (function () {
 
 			function removeNow() {
 				for (var j = 0; j < whereArr.length; j++){
-					$('#i' + whereArr[j]).removeClass('face-up').addClass('face-down');
+					$('#i' + whereArr[j]).removeClass('face-up').addClass('matched');
 					$('#' + whereArr[j]).css("background-image", "url(img/redX.png)");
 				}
 			}
@@ -40,7 +40,7 @@ var MemoryGUI = (function () {
 		} 
 
 		var $resetBtn = $('<button>', {id: 'reset'});
-		$resetBtn.append('Rest Memory Game');
+		$resetBtn.append('Reset Memory Game');
 		$contain.append($resetBtn);
 
 		$('#reset').click(function() {

@@ -29,10 +29,7 @@ table tr td img:hover {
 }
 
 .matched {
-	/* 
-	Need to find a way that I can make this work without setting
-	background for all the TD's to the cardback.jpg
-	*/
+	visibility: hidden;
 }
 
 #memorygame {
