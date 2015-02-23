@@ -10,9 +10,11 @@ function go() {
 	// console.log("gui new Memeory GUI");
 	game.gui(gui); // link game to gui
 	// console.log("loaded game.gui(gui)");
-	gui.render();
+	// gui.render();
 	// console.log("loaded render");
 }
+
+
 
 window.addEventListener("load",go);
 

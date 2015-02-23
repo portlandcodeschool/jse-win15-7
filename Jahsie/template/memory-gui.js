@@ -1,18 +1,12 @@
 var MemoryGUI = (function() {
 
-	//...
-
 	function GuiCtor(container, game) {
 		var game = game;
 		var cardNums = game.size();
-		// var liftFunction = game.lift;
-		// this.liftFunction = liftFunction;
-		// var liftACard = game.lift;
-		// var what = liftACard.toString();
-		// console.log(what);
-
-
 		var body = document.body;
+		var resetButton = document.getElementById('reset');
+		var clickMatch = document.getElementById('showTheMatch');
+
 		if (typeof container === "string") {
 			container = document.getElementById(container);
 		}
@@ -37,54 +31,24 @@ var MemoryGUI = (function() {
 				newCard.innerHTML = cardFace;
 
 				newCard.onclick = function() {
-
-
-					var cardToLift = this.id;
-
-					game.lift(cardToLift);
-					var liftCard = cardToLift.toString();					
-					console.log('flipped card' + liftCard);
-					this.classList.toggle('face-down');
-
-
+					var cardString = this.id;
+				 	var cardNumber = parseInt(cardString);
+				 	game.lift(cardNumber);
 				};
+
+
 			}
 			container.appendChild(cardsDiv);
 		};
 
-		// var clickableCard = document.getElementsByClassName('cardDiv');
-		// console.log("This is a clickable card" + clickableCard);
 		
-		// clickableCard.onclick = function() {
-		// 	console.log('clicked clickable card');
-		// 	// this.classList.toggle('face-down');
-		// 	game.lift(theCardID);					
-		// 	console.log('flipped card' + theCardID);
-
-		// };
-
-		// this.showMatch = showMatch;
-
-		// var match = function() {
-		// 	this.showMatch();
-		// 	window.setTimeout(showMatch, 1000);
-		// }
-
-
-
-
-				// 	//window.lastEvent = evt;
-
-				// }
 		// public instance methods:
 		// 	};
 		// 	//...
 		// };
 		var show = function(where, what) {
 			var cardToShow = document.getElementById(where);
-			console.log("cardToShow = " +cardToShow);
 			cardToShow.classList.toggle('face-down');
-
 		};
 
 		var hide = function(here) {
@@ -93,18 +57,9 @@ var MemoryGUI = (function() {
 				console.log("cardToHide1 = " +cardToHide1);
 				cardToHide1.classList.toggle('face-down');				
 			}
-			window.setTimeout(toHide, 2500); 
+			window.setTimeout(toHide, 1500); 
 		}
 
-
-		this.removeSoon = function(whereArr) {
-			//...
-		};
-		this.hideSoon = function(whereArr) {
-			//...
-		};
-
-		var clickMatch = document.getElementById('showTheMatch');
 		var showMatchMessage = function() {
 			var matchMessage = document.getElementById('match');
 			var toggleMessage = function() {
@@ -123,20 +78,23 @@ var MemoryGUI = (function() {
 			there.className = "cardDiv matched";
 		}
 
+		resetButton.onclick = function() {
+			container.innerHTML = '';
+			render();
+		};
+
 		this.showMatchMessage = showMatchMessage;
 		this.show = show;
 		this.hide = hide;
 		this.render = render;
 		this.matchSet = matchSet;
 		// Do some initial setup and rendering...
-		var resetButton = document.getElementById('reset');
-
-		resetButton.onclick = function() {
-			container.innerHTML = '';
-			render();
-		};
+		render();
 	}
 
 	return GuiCtor;
 })();
+
+
+
 

@@ -42,13 +42,12 @@ var MemoryGame = (function() {
 
 			// must be a face-down card here; proceed...
 			var valHere = valueAt(here);
-			console.log("this is here" + here);
-			console.log("this is valhere"+ valHere)
+
 			if (there === false) {
 				// no current face-up
 				there = here; //turn here face-up
 				
-				//Attempt to get it to flip the card
+				//Flips card face up
 				_gui.show(here, valHere);
 
 			} else {
@@ -57,11 +56,7 @@ var MemoryGame = (function() {
 				if (cardset.match(valHere,valueAt(there))) {
 					// match; remove both:
 					removeAt(here);
-
 					removeAt(there);
-					//optional: report match
-					// console.log("Match!")
-
 					//show match message
 					_gui.matchSet(here, there);
 					_gui.showMatchMessage();
@@ -70,9 +65,6 @@ var MemoryGame = (function() {
 				_gui.hide(there);
 				_gui.hide(here);
 				there = false;
-
-
-
 			}
 			return cardset.display(valHere); 
 		}
