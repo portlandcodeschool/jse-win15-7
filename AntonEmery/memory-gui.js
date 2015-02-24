@@ -9,17 +9,27 @@ var MemoryGUI = (function () {
 			//style card face down
 			console.log('Game reset!');
 		}
+		
 		this.show = function(where, value) {
 			//change card css to face up. where parameter equals card id 
 			$('#' + where).toggleClass('face-up face-down');
-			value[0];    //animal name index of card
-			console.log(value[0]);
+			var currentClass = document.getElementById(where).classList;
+			//console.log(currentClass);
+			if(currentClass[0] == 'face-up') {
+				console.log(value[0]); //animal name of card
+			}
 		}
+		
 		this.removeSoon = function(whereArr) {
 			//make card hide, facedown
 		}
+		
 		this.hideSoon = function(whereArr) {
 			//hide but not quite right away. window.setTimeout
+			whereArr.forEach(function(x) {
+				//make class face down
+				$('#' + x).toggleClass('face-down');
+			})
 		}
 
 		var clicked = function() {
@@ -31,6 +41,7 @@ var MemoryGUI = (function () {
 
 		var callReset = this.reset;
 		var invokeShow = this.show;
+		var hideSoon = 
 
 		// Do some initial setup and rendering...
 		function render() {
@@ -44,7 +55,6 @@ var MemoryGUI = (function () {
 				grid.appendChild(list);
 				list.onclick = clicked;
 				list.classList.add('face-down');
-
 			} 
 			container.appendChild(grid);
 

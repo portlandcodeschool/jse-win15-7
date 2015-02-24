@@ -27,3 +27,7 @@ li {
 .matched {
 	background-color: black;
 }
+
+li.invisible {
+	visibility: hidden;
+}
