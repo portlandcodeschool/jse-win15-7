@@ -1,0 +1,28 @@
+/* CSS for GUI...*/
+
+#memorygame {
+	border: 1px solid black;
+}
+li {
+	list-style: none;
+	float: left;
+	margin: 5px;
+	width: 150px;
+	height: 250px;
+	border: 1px solid blue;
+	
+}
+
+.face-up{
+	background-color: red;
+}
+
+.face-down{
+	background-color: blue;
+}
+
+.matched {
+	background-color: 
+}
+
+
