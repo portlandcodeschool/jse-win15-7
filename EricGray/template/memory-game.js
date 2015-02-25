@@ -17,7 +17,17 @@ var MemoryGame = (function() {
 			this.shuffle();
 			for (i = 0; i < cardset.values().length; i++){
 				cardset.values()[i].faceup = false;}	*/
-		}
+		}	
+
+		var gui = function(useGui) {
+			if (useGui === undefined) {
+				return _gui;
+			} else if (typeof useGui === 'object') {
+				_gui = useGui;
+			}
+			//if (useGui===undefined) {return previous object}
+			//else if (useGui===object) {remember useGui}
+		}  
 
 		reset();
 
@@ -53,15 +63,7 @@ var MemoryGame = (function() {
 			return there;
 		}
 
-/*!*/		var gui = function(useGui) {
-				if (useGui === undefined) {
-				return _gui;
-			} else if (typeof useGui === 'object') {
-				_gui = useGui;
-			}
-			//if (useGui===undefined) {return previous object}
-			//else if (useGui===object) {remember useGui}
-		}  
+
 
 		var remaining = function() {
 			return Object.keys(slots).map(Number);
@@ -74,14 +76,14 @@ var MemoryGame = (function() {
 
 		var lift = function(here) {
 			var here = Number(here.id);
-			console.log(here);
-			console.log(typeof here);
-			if (_gui){
-				_gui.show(here, valueAt(Number(here)).name);
-			};
+
 			if (!isValid(here, length)){console.log('at is valid'); return false;};
 			if (!remainsAt(here)){console.log('at remains at'); return false;};
 			if (there===here) {console.log('at there is here');return false;};
+
+			if (_gui){
+				_gui.show(here, valueAt(Number(here)).name);
+			};
 
 			var valHere = valueAt(here);
 			if (there === false) {
@@ -91,11 +93,13 @@ var MemoryGame = (function() {
 					removeAt(here);
 					removeAt(there);
 					if (_gui){
-						console.log('removing ' + here+ ' and ' + there)
 						_gui.removeSoon([here, there]);
 					}
-					console.log("Match!")
+					console.log("Match!");
+					there = false;
+					return;
 				}
+				_gui.hideSoon([there, here]);
 				there = false;
 			} 
 			return cardset.display(valHere);

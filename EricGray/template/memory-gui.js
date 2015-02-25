@@ -14,7 +14,6 @@ var MemoryGUI = (function () {
 		this.reset = function() {
 			//...
 			this.render();
-
 		}
 		this.show = function(where,what) {
 			//...
@@ -39,9 +38,9 @@ var MemoryGUI = (function () {
 			//...
 			window.setTimeout(function(){
 				for (var card in whereArr){
-				document.getElementById(whereArr).classList.toggle('face-down', true);
-				document.getElementById(whereArr).classList.toggle('face-up', false);
-				document.getElementById(whereArr).innerHTML = ''}
+				document.getElementById(whereArr[card]).classList.toggle('face-down', true);
+				document.getElementById(whereArr[card]).classList.toggle('face-up', false);
+				document.getElementById(whereArr[card]).innerHTML = ''}
 				}, 1000);
 		}
 
@@ -52,10 +51,17 @@ var MemoryGUI = (function () {
 
 		this.render = function(){
 			container.innerHTML = '';
+			var doOver = document.createElement('div')
+				doOver.setAttribute('id', 'reset');
+				doOver.classList.add('resetButton');
+				doOver.innerHTML = 'RESET';
+				doOver.onclick = function(){
+					game.reset();
+					this.reset();
+				};
 			var playmat = document.createElement('table');
 			for (row = 0; row<2; row++){
 				var gameRow = document.createElement('tr');
-				//gameRow.className = 'cardBorder';
 				for (cell = 0; cell<(game.size()*0.5); cell++){
 					var cardCell = document.createElement('td');
 					gameRow.appendChild(cardCell);
@@ -66,13 +72,13 @@ var MemoryGUI = (function () {
 					cardCell.classList.toggle('hidden', false);
 					cardCell.onclick = function(){
 					game.lift(this);
-//					game.lift(row*4+cell);};
 					};
 				};
 			
 				playmat.appendChild(gameRow);
 			};
 			container.appendChild(playmat);
+			document.getElementById('memorygame').appendChild(doOver);
 		};
 
 	}
