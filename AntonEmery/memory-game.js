@@ -39,11 +39,14 @@ var MemoryGame = (function() {
 		// New methods:
 		var _gui = null; //private variable
 
+		
+		//	game.gui(gui); // link game to gui  ??? calling a method which is a setter method. method of game instance
 		var gui = function(useGui) {
-			if (useGui === undefined) //no parameter; act as getter:
+			if (useGui === undefined){ //no parameter; act as getter:
 				return _gui;
-			// else act as setter:
-			_gui = useGui;
+			} else {// else act as setter:
+				_gui = useGui;
+			}
 		}
 
 		var size = function() {  // getter function returns total number of cards in current game
@@ -52,29 +55,34 @@ var MemoryGame = (function() {
 
 		
 
-		var lift = function(here) {//--> display string
-			
-			if (!isValid(here,length)) return false;
-			if (!remainsAt(here)) return false;
-			if (there===here) return false;
-
+		var lift = function(here) {//--> display string  id of card
+			if (!isValid(here,length)) return false;  //id of card, total cards, including gaps
+			if (!remainsAt(here)) return false; //if there is not a card at the current location
+			if (there===here) return false; //if faceup card is equal to current hard
 			// must be a face-down card here; proceed...
-			var valHere = valueAt(here);
-			if (there === false) {
+			_gui.show(here, valueAt(here)); //need animal name of card as second parameter
+			
+			var valHere = valueAt(here); //current card [name, num]
+			console.log(valHere);
+			if (there === false) {  //card is not face up
 				// no current face-up
 				there = here; //turn here face-up
 			} else {
 				// check match with face-up
-				if (cardset.match(valHere,valueAt(there))) {
+				if (cardset.match(valHere,valueAt(there))) { //if current card value matches other face up card
 
 					// match; remove both:
 					removeAt(here);
 					removeAt(there);
+					//_gui.removeSoon([here, there]);
+
 					//optional: report match
 					console.log("Match!")
+				} else {
+					//either way, turn face-up to face-down:
+					there = false;
+					//window.setTimeout(_gui.hideSoon([here, there]), 3000);
 				}
-				//either way, turn face-up to face-down:
-				there = false;
 			}
 			return cardset.display(valHere); 
 		}

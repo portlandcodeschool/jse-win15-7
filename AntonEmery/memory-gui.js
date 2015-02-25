@@ -11,37 +11,42 @@ var MemoryGUI = (function () {
 		}
 		
 		this.show = function(where, value) {
+
 			//change card css to face up. where parameter equals card id 
-			$('#' + where).toggleClass('face-up face-down');
+			$('#' + where).toggleClass('face-down face-up');
 			var currentClass = document.getElementById(where).classList;
-			//console.log(currentClass);
-			if(currentClass[0] == 'face-up') {
-				console.log(value[0]); //animal name of card
-			}
+			console.log(value[0]); //animal name of card
+			// if(currentClass[1] == 'face-up') {
+			// 	console.log(value[0]); //animal name of card
+			// }
 		}
 		
-		this.removeSoon = function(whereArr) {
-			//make card hide, facedown
-		}
-		
-		this.hideSoon = function(whereArr) {
+		this.hideSoon = function(whereArr) {  //sets facedown
 			//hide but not quite right away. window.setTimeout
 			whereArr.forEach(function(x) {
 				//make class face down
-				$('#' + x).toggleClass('face-down');
-			})
+				console.log('hide soon');
+				$('#' + x).attr('class', 'face-down');
+				//$('#' + x).toggleClass('face up face-down');
+			});
+		}
+
+		this.removeSoon = function(whereArr) {  //sets invisible
+			whereArr.forEach(function(x) {
+				//set class invisible
+				console.log('removing ' + x);
+				$('#' + x).addClass('invisible');
+			});
+
 		}
 
 		var clicked = function() {
-			//call the lift method
-			game.lift(parseInt(this.id));
-			//call show function
-			invokeShow(this.id, game.valueAt(this.id));  //second argument is the array that contains card name and number
+			game.lift(parseInt(this.id)); //removed parse int
 		}
 
+
 		var callReset = this.reset;
-		var invokeShow = this.show;
-		var hideSoon = 
+		
 
 		// Do some initial setup and rendering...
 		function render() {
