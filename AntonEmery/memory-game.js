@@ -81,7 +81,7 @@ var MemoryGame = (function() {
 				} else {
 					//either way, turn face-up to face-down:
 					there = false;
-					//window.setTimeout(_gui.hideSoon([here, there]), 3000);
+					window.setTimeout(function(){_gui.hideSoon([here, there]);}, 5000);
 				}
 			}
 			return cardset.display(valHere); 
