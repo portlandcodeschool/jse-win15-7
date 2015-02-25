@@ -5,32 +5,37 @@ var MemoryGUI = (function () {
 	//click = function() {console.log('click')}
 
 	function GuiCtor(container,game) {
-		var size = 16;
-
+		var size = game.size();
+		//var size = 16;
 		if(typeof container === 'string'){
 		var container = document.getElementById(container);
 		};
 
-		
+		printed = document.createElement('h1');
+		document.body.appendChild(printed);
 
+		
 		this.render = function(){
 			var id = 0;
 			container.innerHTML = '';
-			var table = document.createElement('table');
+			var table = document.createElement('table'); //make table
 
-			for(var i = 0; i < Math.sqrt(size); i++){
+			printed.innerHTML = 'wlcm to mmry flp a crd'
+
+			for(var i = 0; i < Math.sqrt(size); i++){ //make table rows
 				table.appendChild(document.createElement('tr'));
 			
-				for(var j = 0; j < Math.sqrt(size); j++){
-					tabCol = document.createElement('td');
-					tabCol.setAttribute('id', id);
-					tabCol.className = 'down';
+				for(var j = 0; j < Math.sqrt(size); j++){ //make table cells
+					tabCol = document.createElement('td'); // create
+					tabCol.setAttribute('id', id); // give each cell a unique id
+					tabCol.className = 'down'; // display down css class
 					tabCol.addEventListener('click', function(){game.lift(this.id)}); 
 					//tabCol.setAttribute('')}
 					
-					table.children[i].appendChild(tabCol);
+					table.children[i].appendChild(tabCol); //attach to table
 					//tabCol.className = 'dimensions';
 					id++;
+
 				}
 			}
 			container.appendChild(table);
@@ -40,10 +45,7 @@ var MemoryGUI = (function () {
 
 		this.render()
 
-		printed = document.createElement('h1');
-		document.body.appendChild(printed);
-
-
+		
 		// public instance methods:
 		this.reset = function() {
 			this.render();

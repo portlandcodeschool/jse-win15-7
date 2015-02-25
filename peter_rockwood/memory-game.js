@@ -1,13 +1,20 @@
 var MemoryGame = (function() {
 	function Ctor(cardset) {
 
-		console.log(
-				",-,-,-.\n"+                         
-				"`,| | |   ,-. ,-,-. ,-. ,-. . .\n"+ 
-  				"  | ; | . |-' | | | | | |   | |\n"+ 
-  				"  '   `-' `-' ' ' ' `-' '   `-|\n"+ 
-                "                             /|\n"+ 
-                "            				 `-'" )
+		var consoleTitle = ",-,-,-.\n"+                         
+						   "`,| | |   ,-. ,-,-. ,-. ,-. . .\n"+ 
+  						   "  | ; | . |-' | | | | | |   | |\n"+ 
+  						   "  '   `-' `-' ' ' ' `-' '   `-|\n"+ 
+                		   "                             /|\n"+ 
+                		   "            				 `-'" 
+        var pageTitle =    ",-,-,-."+ '<br>' +                         
+						   "`,| | |   ,-. ,-,-. ,-. ,-. . ." + '<br>' +
+  						   "  | ; | . |-' | | | | | |   | |" + '<br>' +
+  						   "  '   `-' `-' ' ' ' `-' '   `-|" + '<br>' + 
+                		   "                              |" + '<br>' +
+                		   "            				`-'" 
+
+		console.log(consoleTitle)
 		
 		var cards = cardset.values();
 		var board;
@@ -16,9 +23,7 @@ var MemoryGame = (function() {
 		newBoard();
 		shuffleFast(cards);
 
-		
-
-
+		//internal functions
 		function shuffleFast(cards){//adapted from Mike Bostock's Fisher-Yates implementation
 				for(var i = cards.length-1; i > 0; i--){
 					var randElement = Math.floor(Math.random() * i);
@@ -48,7 +53,7 @@ var MemoryGame = (function() {
 		}
 
 		this.size = function(){
-			return this.cardset.values().length;
+			return cards.length;
 		}
 
 		this.gui = function(useGui){
@@ -63,14 +68,9 @@ var MemoryGame = (function() {
 			this.gui.reset()
 			shuffleFast(cards); //shuffle
 			newBoard(); // set board array to zero
+			this.gui.printText(pageTitle)
 
-			console.log(
-				",-,-,-.\n"+                         
-				"`,| | |   ,-. ,-,-. ,-. ,-. . .\n"+ 
-  				"  | ; | . |-' | | | | | |   | |\n"+ 
-  				"  '   `-' `-' ' ' ' `-' '   `-|\n"+ 
-                "                             /|\n"+ 
-                "            				 `-'" )
+			console.log(consoleTitle)
 
 			return;
 		}
@@ -109,14 +109,14 @@ var MemoryGame = (function() {
 			
 			if(board[where] === 'gone'){ // check to see if position is already discarded
 				console.log('no card here....dummy, choose another')
-				this.gui.printText('no card here....dummy, choose another')
+				this.gui.printText('no crd here....dmmy, chse anthr')
 				console.log('board:', board);
 				return
 			}
 
 			if(board[where] === 1){ // check to see if position is already face-up
 				console.log('this card is already flipped....dummy, choose another')
-				this.gui.printText('this card is already flipped....dummy, choose another')
+				this.gui.printText('ths crd is alrdy flpd....dmmy, chse anthr')
 				console.log('board:', board);
 				return
 			}
@@ -127,7 +127,7 @@ var MemoryGame = (function() {
 				whr = document.getElementById(where);
 				this.gui.show(where, whr.textContent = cardset.display(cards[where])); // gui method
 				console.log('you flipped: ' + cardset.display(cards[where]))
-				console.log('flip another');
+				console.log('flp anthr');
 				this.gui.printText('flip another');
 				console.log('board:', board);
 				return cardset.display(cards[where]);
@@ -146,9 +146,15 @@ var MemoryGame = (function() {
 				 	board[this.faceupWhere()] = 'gone';
 
 				 	
-					if(won()){ 
+					if(won()){ //won() described above
 						console.log('you win, good job, go outside');
 						this.gui.printText('you win, good job, go outside');
+						for(var i = 0; i < 16; i++){
+							whr = document.getElementById(i);
+							this.gui.show(i, whr.textContent = cardset.display(cards[i]))
+							console.log(i)
+						}
+						
 						return
 					} 
 

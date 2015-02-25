@@ -44,12 +44,15 @@ td {
 
 h1 {
 	position: absolute;
-	display: inline-block;
-	color: #9c8c8c;
-	font-size: 280%;
+	display: block;
+	color: #9E9AED;
+	font-size: 150%;
 	font-family: Arial;
-	top: 0%;
+	top: 10%;
 	left: 30%;
+	max-width: 30%
+	white-space: pre;
+	line-height: 50%;
 
 
 }
