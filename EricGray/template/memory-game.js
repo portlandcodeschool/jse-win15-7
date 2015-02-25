@@ -69,21 +69,19 @@ var MemoryGame = (function() {
 
 		var size = function() {
 			return length;
-
 		}
 
-		var showGui = function(){
-			console.log(_gui);
-			console.log(slots);
-		}
 
 		var lift = function(here) {
+			var here = Number(here.id);
+			console.log(here);
+			console.log(typeof here);
 			if (_gui){
-				_gui.show(here.id, valueAt(Number(here.id)).name);
+				_gui.show(here, valueAt(Number(here)).name);
 			};
-			if (!isValid(here, length)) return false;
-			if (!remainsAt(here)) return false;
-			if (there===here) return false;
+			if (!isValid(here, length)){console.log('at is valid'); return false;};
+			if (!remainsAt(here)){console.log('at remains at'); return false;};
+			if (there===here) {console.log('at there is here');return false;};
 
 			var valHere = valueAt(here);
 			if (there === false) {
@@ -92,6 +90,10 @@ var MemoryGame = (function() {
 				if (cardset.match(valHere,valueAt(there))) {
 					removeAt(here);
 					removeAt(there);
+					if (_gui){
+						console.log('removing ' + here+ ' and ' + there)
+						_gui.removeSoon([here, there]);
+					}
 					console.log("Match!")
 				}
 				there = false;
@@ -122,7 +124,6 @@ var MemoryGame = (function() {
 	this.remaining = remaining;
 	this.size = size;
 	this.gui = gui;
-	this.showGui = showGui;
 
 
 	//...

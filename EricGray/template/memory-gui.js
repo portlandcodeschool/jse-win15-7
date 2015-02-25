@@ -13,36 +13,38 @@ var MemoryGUI = (function () {
 		// public instance methods:
 		this.reset = function() {
 			//...
+			this.render();
 
 		}
 		this.show = function(where,what) {
 			//...
-			console.log("showing!");
-			console.log('here is where');
-			console.log(where.id);
-			console.log('here is what');
-			console.log(what);
 			var showIt = document.getElementById(where);
-			showIt.setAttribute('class', 'face-up');
+			showIt.classList.toggle('face-down', false)
+			showIt.classList.toggle('face-up', true);
 			showIt.innerHTML = what;
 
 		}
 		this.removeSoon = function(whereArr) {
-			//...
-			var target = document.getElementById(whereArr);
-			//window.setTimeout(function(){target.className = 'hidden'; target.innerHTML = ''}, 5000);
-			window.setTimeout(function(){delete target}, 5000);
-		}
-		this.hideSoon = function(whereArr) {
-			//...
-			window.setTimeout(function(){document.getElementById(whereArr).className = 'face-down';
-				document.getElementById(whereArr).innerHTML = ''}, 5000);
+				window.setTimeout(function(){
+					for (var card in whereArr){
+						document.getElementById(whereArr[card]).innerHTML = '';
+						document.getElementById(whereArr[card]).classList.toggle('face-up', false);
+						document.getElementById(whereArr[card]).classList.toggle('hidden', true);
+					};
+				}, 1000);
+			
 		}
 
-		this.checker = function(){
-			game.showGui();
-			console.log(valueAt(0))
+		this.hideSoon = function(whereArr) {
+			//...
+			window.setTimeout(function(){
+				for (var card in whereArr){
+				document.getElementById(whereArr).classList.toggle('face-down', true);
+				document.getElementById(whereArr).classList.toggle('face-up', false);
+				document.getElementById(whereArr).innerHTML = ''}
+				}, 1000);
 		}
+
 
 		// Do some initial setup and rendering...
 /*		var toDraw = game.size();
@@ -52,18 +54,17 @@ var MemoryGUI = (function () {
 			container.innerHTML = '';
 			var playmat = document.createElement('table');
 			for (row = 0; row<2; row++){
-				console.log(game.size());
 				var gameRow = document.createElement('tr');
 				//gameRow.className = 'cardBorder';
 				for (cell = 0; cell<(game.size()*0.5); cell++){
 					var cardCell = document.createElement('td');
 					gameRow.appendChild(cardCell);
 					cardCell.setAttribute('id', (row*4+cell));
-					cardCell.className = 'face-down';
-					console.log(row*4+cell);
+					cardCell.classList.add('face-down', 'face-up', 'hidden');
+					cardCell.classList.toggle('face-down', true);
+					cardCell.classList.toggle('face-up', false);
+					cardCell.classList.toggle('hidden', false);
 					cardCell.onclick = function(){
-					console.log('ok im lifting from gui.js');
-					console.log(this.lift + 'gui.js');
 					game.lift(this);
 //					game.lift(row*4+cell);};
 					};
