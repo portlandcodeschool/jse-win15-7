@@ -8,4 +8,4 @@ function go() {
 	game.gui(gui); // link game to gui
 }
 
-window.addEventListener("load",go);
+window.addEventListener('load',go);

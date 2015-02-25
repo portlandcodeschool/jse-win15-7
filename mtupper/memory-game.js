@@ -9,31 +9,31 @@ var MemoryGame = (function() {
 		// specific to each instance
 		// ...
 
-		this.reset = function() {
+		var reset = function() {
             slots = cardset.values();
             length = slots.length;
             there = false;
             shuffle(slots);
         };
-		this.remainsAt = function(where) { //boolean
+		var remainsAt = function(where) { //boolean
             return slots[where] !== undefined;
         };
-        this.valueAt = function(where) {
+        var valueAt = function(where) {
             return slots[where];
         };
-        this.removeAt = function(where) {
+        var removeAt = function(where) {
             delete slots[where];
         };
-        this.faceupValue = function() {
+        var faceupValue = function() {
             return valueAt(there);
         };
-        this.faceupWhere = function() {
+        var faceupWhere = function() {
             return there;
         };
-        this.remaining = function() {
+        var remaining = function() {
             return Object.keys(slots).map(Number);
         };
-		this.lift = function(here) {
+		var lift = function(here) {
             if (!isValid(here, length)) return false;
             if (!remainsAt(here)) return false;
             if (there === here) return false;
@@ -68,19 +68,24 @@ var MemoryGame = (function() {
 		this.size = function() {
             return length;
         }
+        this.reset = reset;
+        this.lift = lift;
+        this.faceupValue = faceupValue;
+        this.faceupWhere = faceupWhere;
+        this.remaining = remaining;
 	}
 
 	// some of those instance methods could instead be shared
 	// by installing them in GameCtor.prototype
 	// ...
 
-    MemoryGame.prototype.isValid = function(where, length) {
+    var isValid = function(where, length) {
         return (typeof where === 'number') &&
             (where % 1 === 0) &&
             (where > 0) &&
             (where < length)
     };
-    MemoryGame.prototype.shuffle = function(array) {
+    var shuffle = function(array) {
         // Knuth-Fisher-Yates, modified from http://bost.ocks.org/mike/shuffle/
         var end = array.length, temp, i;
             // While there remains elements to shuffle
