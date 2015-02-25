@@ -25,9 +25,8 @@ var MemoryGUI = (function () {
 			//hide but not quite right away. window.setTimeout
 			whereArr.forEach(function(x) {
 				//make class face down
-				console.log('hide soon');
 				$('#' + x).attr('class', 'face-down');
-				//$('#' + x).toggleClass('face up face-down');
+				//$('#' + x).toggleClass('face-up face-down'); //only second card is going face down
 			});
 		}
 

@@ -63,7 +63,7 @@ var MemoryGame = (function() {
 			_gui.show(here, valueAt(here)); //need animal name of card as second parameter
 			
 			var valHere = valueAt(here); //current card [name, num]
-			console.log(valHere);
+			//console.log(valHere);
 			if (there === false) {  //card is not face up
 				// no current face-up
 				there = here; //turn here face-up
@@ -80,7 +80,7 @@ var MemoryGame = (function() {
 					console.log("Match!")
 				} else {
 					//either way, turn face-up to face-down:
-					there = false;
+					//there = false;  why does hideSoon work when commented out?
 					window.setTimeout(function(){_gui.hideSoon([here, there]);}, 5000);
 				}
 			}
