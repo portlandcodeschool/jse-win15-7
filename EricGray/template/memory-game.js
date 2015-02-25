@@ -4,7 +4,8 @@ var MemoryGame = (function() {
 		var slots,
 			length,
 			there,
-			_gui;
+			_gui,
+			lifts
 
 		var reset = function() {
 		
@@ -12,6 +13,7 @@ var MemoryGame = (function() {
 			length = slots.length;
 			there = false;
 			shuffle(slots);
+			lifts = 0;
 			if (_gui){_gui.reset()};
 
 /*	My original code:
@@ -47,6 +49,14 @@ var MemoryGame = (function() {
 		var faceupValue = function() {                         //maybe better as for each?
         	return valueAt(there);
 
+        }
+
+        var checkForGameOver = function(){
+        	if (remaining().length == 0){
+        		return true;
+        	}
+        }
+
 
 		/* My original code:
         var counter = 0;
@@ -57,7 +67,7 @@ var MemoryGame = (function() {
                         (counter += 1) && (console.log(counter))};};
                 if (counter = (cardset.values().length + 1)){
                         return false}; */
-		}
+		
 
 
 		var faceupWhere = function() {
@@ -77,7 +87,7 @@ var MemoryGame = (function() {
 
 		var lift = function(here) {
 			var here = Number(here.id);
-
+			lifts += 1;
 			if (!isValid(here, length)){console.log('at is valid'); return false;};
 			if (!remainsAt(here)){console.log('at remains at'); return false;};
 			if (there===here) {console.log('at there is here');return false;};
@@ -97,12 +107,17 @@ var MemoryGame = (function() {
 						_gui.removeSoon([here, there]);
 					}
 					console.log("Match!");
-					there = false;
+					there = false;			
+						if (this.checkForGameOver() == true){
+							console.log('checking game over');
+							_gui.gameOver(lifts);
+			};
 					return;
 				}
 				_gui.hideSoon([there, here]);
 				there = false;
 			} 
+
 			return cardset.display(valHere);
 		
 
@@ -129,6 +144,7 @@ var MemoryGame = (function() {
 	this.remaining = remaining;
 	this.size = size;
 	this.gui = gui;
+	this.checkForGameOver = checkForGameOver;
 
 
 	//...

@@ -9,7 +9,7 @@ var MemoryGUI = (function () {
 			return {}
 		}; 
 		
-
+		
 		// public instance methods:
 		this.reset = function() {
 			//...
@@ -42,6 +42,18 @@ var MemoryGUI = (function () {
 				document.getElementById(whereArr[card]).classList.toggle('face-up', false);
 				document.getElementById(whereArr[card]).innerHTML = ''}
 				}, 1000);
+		}
+
+		this.gameOver = function(clicks){
+			var finish = document.createElement('div');
+			finish.classList.add('welcome', 'hidden');
+			finish.classList.toggle('welcome', true);
+			finish.classList.toggle('hidden', false);
+			finish.innerHTML = 'Congratulations, you won!' +'<br />' + '<br />'+
+			'You completed the game in ' +clicks+ ' clicks!' +'<br />' + '<br />'+
+			'Click RESET to play again.';
+			container.appendChild(finish);
+			window.setTimeout(function(){finish.classList.toggle('hidden')}, 5000);
 		}
 
 
@@ -78,6 +90,14 @@ var MemoryGUI = (function () {
 			};
 			container.appendChild(playmat);
 			document.getElementById('memorygame').appendChild(doOver);
+			var banner = document.createElement('div');
+			banner.classList.add('welcome', 'hidden');
+			banner.classList.toggle('welcome', true);
+			banner.classList.toggle('hidden', false);
+			banner.innerHTML = 'Welcome to heroes and villains matchup.' +'<br />' + '<br />'+
+			'Match heroes and villains to similar heroes and villains in their own comics universe!';
+			container.appendChild(banner);
+			window.setTimeout(function(){banner.classList.toggle('hidden')}, 5000);
 		};
 
 	}
