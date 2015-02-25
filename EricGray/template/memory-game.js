@@ -8,10 +8,11 @@ var MemoryGame = (function() {
 
 		var reset = function() {
 		
-			slots = cardset.values()
+			slots = cardset.values();
 			length = slots.length;
 			there = false;
 			shuffle(slots);
+			if (_gui){_gui.reset()};
 
 /*	My original code:
 			this.shuffle();

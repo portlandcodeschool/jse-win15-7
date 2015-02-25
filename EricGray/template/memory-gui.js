@@ -57,7 +57,6 @@ var MemoryGUI = (function () {
 				doOver.innerHTML = 'RESET';
 				doOver.onclick = function(){
 					game.reset();
-					this.reset();
 				};
 			var playmat = document.createElement('table');
 			for (row = 0; row<2; row++){
