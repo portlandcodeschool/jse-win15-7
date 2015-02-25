@@ -1,3 +1,8 @@
+//Questions
+//cards from a previous turn count as matches
+//getting type not defined error
+
+
 var MemoryGame = (function() {
 
 	function Ctor(cardset) {
@@ -60,7 +65,7 @@ var MemoryGame = (function() {
 			if (!remainsAt(here)) return false; //if there is not a card at the current location
 			if (there===here) return false; //if faceup card is equal to current hard
 			// must be a face-down card here; proceed...
-			_gui.show(here, valueAt(here)); //need animal name of card as second parameter
+			_gui.show(here, valueAt(here)); //id of card, animal name, numerical value
 			
 			var valHere = valueAt(here); //current card [name, num]
 			//console.log(valHere);
@@ -69,19 +74,22 @@ var MemoryGame = (function() {
 				there = here; //turn here face-up
 			} else {
 				// check match with face-up
-				if (cardset.match(valHere,valueAt(there))) { //if current card value matches other face up card
+				if (cardset.match(valHere, valueAt(there))) { //if current card value matches other face up card
 
 					// match; remove both:
 					removeAt(here);
 					removeAt(there);
-					//_gui.removeSoon([here, there]);
+
+					//set class invisible in DOM
+					_gui.removeSoon([here, there]);
 
 					//optional: report match
 					console.log("Match!")
 				} else {
 					//either way, turn face-up to face-down:
-					//there = false;  why does hideSoon work when commented out?
+					//there = false;  //only second card is going face down
 					window.setTimeout(function(){_gui.hideSoon([here, there]);}, 5000);
+
 				}
 			}
 			return cardset.display(valHere); 
