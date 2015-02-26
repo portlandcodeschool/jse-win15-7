@@ -13,8 +13,8 @@ var MemoryGame = (function() {
 			slots = cardset.values();
 			length = slots.length;
 			there = false;
-			shuffle(slots);
-		};
+			//shuffle(slots);
+		}
 		reset(); // reset now as part of init'ing
 
 		this.size = function() {
@@ -28,11 +28,11 @@ var MemoryGame = (function() {
 			// else act as setter:
 			_gui = useGui;
 		};
-
+/*
 		this.lift = function(where) {
 			console.log("Attempted lift("+where+")");
 		};
-
+*/
 		var remainsAt = function(where) {//--> boolean
 			return slots[where]!==undefined;
 		};
@@ -40,7 +40,7 @@ var MemoryGame = (function() {
 			return slots[where];
 		};
 		var removeAt = function(where) {
-			delete slots[where];
+			delete slots[where]; // removes faceup card so lift doesn't call it again
 		};
 		var faceupValue = function() {//--> card val
 			return valueAt(there);
@@ -51,10 +51,6 @@ var MemoryGame = (function() {
 		var remaining = function() {//--> array of integers
 			return Object.keys(slots).map(Number);
 		};
-		// function to show all cards in the console
-		//var setSize = function() {
-		//	return cardset.arraySize();
-
 
 		var lift = function(here) {//--> display string
 			if (!isValid(here,length)) return false;
@@ -77,7 +73,7 @@ var MemoryGame = (function() {
 				}
 				//either way, turn face-up to face-down:
 				there = false;
-				console.log('here is ' + here);
+				console.log('here is val ' + here);
 				console.log('there is ' + there);
 			}
 			return cardset.display(valHere); 
