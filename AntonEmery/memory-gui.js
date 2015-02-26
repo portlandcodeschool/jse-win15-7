@@ -32,10 +32,11 @@ var MemoryGUI = (function () {
 		}
 
 		this.removeSoon = function(whereArr) {  //remove matched cards from game
+			console.log('remove called');
 			whereArr.forEach(function(x) {
 				//set class invisible
 				console.log('removing ' + x);
-				$('#' + x).remove();
+				$('#' + x).attr('class', 'invisible');
 				//$('#' + x).addClass('invisible');  not working, game still sees card
 				//need to make card face down as well
 			});
@@ -43,6 +44,8 @@ var MemoryGUI = (function () {
 		}
 
 		var clicked = function() {
+			console.log(typeof this.id);   //string
+			console.log(typeof parseInt(this.id));  //number
 			game.lift(parseInt(this.id)); 
 			
 		}

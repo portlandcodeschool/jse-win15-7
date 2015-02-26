@@ -1,6 +1,6 @@
 //Questions
 //cards from a previous turn count as matches
-//getting type not defined error
+//after a match all other cards give this error Uncaught TypeError: Cannot read property '1' of undefined
 
 
 var MemoryGame = (function() {
@@ -80,7 +80,7 @@ var MemoryGame = (function() {
 					removeAt(here);
 					removeAt(there);
 
-					//set class invisible in DOM
+					//remove class from DOM
 					_gui.removeSoon([here, there]);
 
 					//optional: report match
@@ -88,7 +88,7 @@ var MemoryGame = (function() {
 				} else {
 					//either way, turn face-up to face-down:
 					//there = false;  //only second card is going face down
-					window.setTimeout(function(){_gui.hideSoon([here, there]);}, 5000);
+					window.setTimeout(function(){_gui.hideSoon([here, there]);}, 2000);
 
 				}
 			}

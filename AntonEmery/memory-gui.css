@@ -29,5 +29,5 @@ li {
 }
 
 li.invisible {
-	visibility: hidden;
+	display: none;
 }
