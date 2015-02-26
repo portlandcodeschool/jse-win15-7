@@ -86,7 +86,7 @@ var MemoryGame = (function() {
 					_gui.removeSoon([here, there]);
 
 					//optional: report match
-					console.log("Match!")
+					console.log("Match!");
 
 					there = false;
 
@@ -94,6 +94,8 @@ var MemoryGame = (function() {
 					//either way, turn face-up to face-down:
 					//there = false;  //only second card is going face down
 					_gui.hideSoon([here, there]);
+					
+					there = false;
 
 				}
 			}
