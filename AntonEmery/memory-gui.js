@@ -23,29 +23,28 @@ var MemoryGUI = (function () {
 		
 		this.hideSoon = function(whereArr) {  //sets facedown
 			//hide but not quite right away. window.setTimeout
-			console.log(whereArr);
-			whereArr.forEach(function(x) {
-				//make class face down
-				$('#' + x).attr('class', 'face-down');
-				//$('#' + x).toggleClass('face-up face-down'); //only second card is going face down
-			});
+			window.setTimeout(function() { 
+				whereArr.forEach(function(x) {
+					//make class face down
+					$('#' + x).attr('class', 'face-down');
+					//$('#' + x).toggleClass('face-up face-down'); //only second card is going face down
+				});
+			}, 1000);
 		}
 
 		this.removeSoon = function(whereArr) {  //remove matched cards from game
-			console.log('remove called');
-			whereArr.forEach(function(x) {
-				//set class invisible
-				console.log('removing ' + x);
-				$('#' + x).attr('class', 'invisible');
-				//$('#' + x).addClass('invisible');  not working, game still sees card
-				//need to make card face down as well
-			});
-
+			window.setTimeout(function() {
+				whereArr.forEach(function(x) {
+					//set class invisible
+					$('#' + x).attr('class', 'invisible');
+					//$('#' + x).addClass('invisible');  not working, game still sees card
+					//need to make card face down as well
+				});
+			}, 1000);
 		}
 
 		var clicked = function() {
-			console.log(typeof this.id);   //string
-			console.log(typeof parseInt(this.id));  //number
+			
 			game.lift(parseInt(this.id)); 
 			
 		}

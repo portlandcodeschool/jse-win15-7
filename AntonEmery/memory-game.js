@@ -17,7 +17,7 @@ var MemoryGame = (function() {
 			slots = cardset.values(); //returns new array iterator object that contains values for each index in the array
 			length = slots.length;
 			there = false;
-			shuffle(slots);
+			//shuffle(slots);
 		}
 		reset();// reset now as part of init'ing
 
@@ -80,15 +80,20 @@ var MemoryGame = (function() {
 					removeAt(here);
 					removeAt(there);
 
+					
+
 					//remove class from DOM
 					_gui.removeSoon([here, there]);
 
 					//optional: report match
 					console.log("Match!")
+
+					there = false;
+
 				} else {
 					//either way, turn face-up to face-down:
 					//there = false;  //only second card is going face down
-					window.setTimeout(function(){_gui.hideSoon([here, there]);}, 2000);
+					_gui.hideSoon([here, there]);
 
 				}
 			}
