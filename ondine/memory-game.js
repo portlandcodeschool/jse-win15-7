@@ -1,6 +1,6 @@
 var MemoryGame = (function() {
 
-	function Ctor(cardset) {
+	function GameCtor(cardset) {
 
 		var slots, //values of shuffled cards;
 				//sparse array: elements are deleted as cards are removed
@@ -27,10 +27,6 @@ var MemoryGame = (function() {
 				return _gui;
 			// else act as setter:
 			_gui = useGui;
-		};
-
-		this.lift = function(where) {
-			console.log("Attempted lift("+where+")");
 		};
 
 		var remainsAt = function(where) {//--> boolean
@@ -73,8 +69,8 @@ var MemoryGame = (function() {
 				}
 				//either way, turn face-up to face-down:
 				there = false;
-				console.log('here is val ' + here);
-				console.log('there is ' + there);
+				// console.log('here is val ' + here);
+				// console.log('there is ' + there);
 			}
 			return cardset.display(valHere); 
 		};
@@ -85,7 +81,7 @@ var MemoryGame = (function() {
 		this.faceupValue = faceupValue;
 		this.faceupWhere = faceupWhere;
 		this.remaining = remaining;
-		// this.gui = gui;
+		//this.gui = gui;
 	} // end ctor
 
 	// Private Functions shared by all boards:
@@ -112,5 +108,5 @@ var MemoryGame = (function() {
  		}
 	}
 
-	return Ctor;
+	return GameCtor;
 })();

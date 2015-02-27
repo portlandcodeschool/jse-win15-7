@@ -25,7 +25,7 @@ var MemoryGUI = (function () {
 				currentCard.innerHTML = what;
 			var cardContent = document.createTextNode(what);
 				currentCard.appendChild(cardContent);
-				//currentCard.innerHTML = '<p class="quote">val[1]</p>';
+				//currentCard.innerHTML = '<p class="quote">val.name</p>';
 		};
 		this.removeSoon = function(whereArr) { // matched cards hide or are removed - decoration
 			//...([a,b]) are matched & hidden
@@ -65,12 +65,12 @@ var MemoryGUI = (function () {
 		$('#header').prepend('<h1>Wisdom of Westeros</h1>');
     $('#header').append('<h2>Match <em>Game of Thrones</em> characters with their words!</h2>');
 
-		var btn = document.createElement('button');        
-    var label = document.createTextNode('Reset');
-    var footer = document.getElementById('footer');       
-      	btn.appendChild(label);
-      	footer.appendChild(btn);	                             
-      	btn.onclick = startOver;
+    $('body').append('<div id = "footer">');
+    var $resetButton = $('<button id="resetButton">Play Again</button>');
+    $('#footer').prepend($resetButton);
+		$('resetButton').on('click', function() {
+			$('li.faceup').attr('class', 'facedown');
+		});
 	}
 
 	return GuiCtor;

@@ -24,7 +24,7 @@ var MemoryCards = (function() {
 					 ];
 
 		this.values = function() {
-			return cards.slice();
+			return gotWomen.slice();
 		};
 		this.match = function(pair1,pair2) { 
 			return (pair1.name===pair2.name); // check if num matches
