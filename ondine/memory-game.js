@@ -28,11 +28,11 @@ var MemoryGame = (function() {
 			// else act as setter:
 			_gui = useGui;
 		};
-/*
+
 		this.lift = function(where) {
 			console.log("Attempted lift("+where+")");
 		};
-*/
+
 		var remainsAt = function(where) {//--> boolean
 			return slots[where]!==undefined;
 		};
