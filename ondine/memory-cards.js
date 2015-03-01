@@ -26,11 +26,14 @@ var MemoryCards = (function() {
 		this.values = function() {
 			return gotWomen.slice();
 		};
+		this.get = function (index) {
+			return gotWomen[index];
+		}
 		this.match = function(pair1,pair2) { 
-			return (pair1.name===pair2.name); // check if num matches
+			return (pair1.name===pair2.name);
 		};
-		this.display = function(val) { //val is pair [num, string]
-			return val.name;  //display the string
+		this.display = function(val) {
+			return val.name;
 		};
 
 	}
