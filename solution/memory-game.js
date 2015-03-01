@@ -1,11 +1,10 @@
 var MemoryGame = (function() {
 
-	function GameCtor(cardset) {
-
+	function Ctor(cardset) {
 		var slots, //values of shuffled cards;
-				//sparse array: elements are deleted as cards are removed
-			length, //total slots, including gaps
-			picked, //position of face-up card if any, or false
+				//sparse array: will have elements deleted as cards are removed
+			length,//total slots, including gaps
+			there, //position of face-up card if any, or false
 			_gui = null;
 
 		// Helper functions which need access to closure vars;
@@ -13,72 +12,72 @@ var MemoryGame = (function() {
 		var reset = function() {
 			slots = cardset.values();
 			length = slots.length;
-			picked = false;
+			there = false;
 			shuffle(slots);
 		}
-		reset(); // reset now as part of init'ing
+		reset();// reset now as part of init'ing
 
-		var gui = function() {// accessor fn
+		var gui = function() {//accessor fn
 			if (arguments.length === 0) 
-				return _gui; // getter
-			_gui = arguments[0]; // setter
+				return _gui; //getter
+			_gui = arguments[0]; //setter
 		}
 
 		var size = function() {
 			return length;
-		};
+		}
 
 		var remainsAt = function(where) {//--> boolean
 			return slots[where]!==undefined;
-		};
+		}
 		var valueAt = function(where) {//--> card val
 			return slots[where];
-		};
+		}
 		var removeAt = function(where) {
-			delete slots[where]; // removes faceup card so lift doesn't call it again
-		};
+			delete slots[where];
+		}
 		var faceupValue = function() {//--> card val
-			return valueAt(picked);
-		};
+			return valueAt(there);
+		}
 		var faceupWhere = function() {//--> integer
-			return picked;
-		};
+			return there;
+		}
 		var remaining = function() {//--> array of integers
 			return Object.keys(slots).map(Number);
-		};
+		}
 
-		var lift = function(pick) {//--> display string
-			if (!isValid(pick,length)) return false;
-			if (!remainsAt(pick)) return false;
-			if (picked===pick) return false;
+		var lift = function(here) {//--> display string
+			if (!isValid(here,length)) return false;
+			if (!remainsAt(here)) return false;
+			if (there===here) return false;
 
 			// must be a face-down card here; proceed...
-			var valPick = valueAt(pick);
-				displayPick = cardset.display(valPick);
-			if (picked === false) {
+			var valHere = valueAt(here),
+				displayHere = cardset.display(valHere);
+			if (there === false) {
 				// no current face-up
-				picked = pick; //turn here face-up
+				there = here; //turn here face-up
 			} else {
 				// check match with face-up
-				if (cardset.match(valPick,valueAt(picked))) {
+				if (cardset.match(valHere,valueAt(there))) {
 					// match; remove both:
-					removeAt(pick);
-					removeAt(picked);
+					removeAt(here);
+					removeAt(there);
 					if (_gui)
-						_gui.removeSoon([pick,picked]);
+						_gui.removeSoon([here,there]);
 					//optional: report match
-					console.log("Match!");
+					console.log("Match!")
 				} else {
 					if (_gui)
-						_gui.hideSoon([pick,picked]);
+						_gui.hideSoon([here,there]);
 				}
 				//either way, turn face-up to face-down:
-				picked = false;
+				there = false;
 			}
 			if (_gui)
-				_gui.show(pick,displayPick);
-			return displayPick; 
-		};
+				_gui.show(here,displayHere);
+			return displayHere; 
+		}
 
 		// Make some functions public as instance methods:
 		this.reset = reset;
@@ -88,7 +87,7 @@ var MemoryGame = (function() {
 		this.remaining = remaining;
 		this.gui = gui;
 		this.size = size;
-	} // end ctor
+	}//end ctor
 
 	// Private Functions shared by all boards:
 	// these could be placed inside ctor,
@@ -97,13 +96,13 @@ var MemoryGame = (function() {
 			return (typeof where === 'number')
 				&& (where%1 === 0)
 				&& (where>=0)
-				&& (where<length);
+				&& (where<length)
 		}
 
 	function shuffle(array) {
 	// Knuth-Fisher-Yates, modified from http://bost.ocks.org/mike/shuffle/
 		var end = array.length, temp, i;
-  			// While picked remain elements to shuffle…
+  			// While there remain elements to shuffle…
 		while (end>1) {
    			// Pick a remaining element…
    			i = Math.floor(Math.random() * end--);
@@ -114,5 +113,7 @@ var MemoryGame = (function() {
  		}
 	}
 
-	return GameCtor;
+	return Ctor;
 })();
+
+
