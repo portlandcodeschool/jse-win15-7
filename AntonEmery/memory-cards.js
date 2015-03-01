@@ -6,7 +6,10 @@ var MemoryCards = (function() {
 	var animals = [	['dog',1],['puppy',1],
 					['cat',2],['kitten',2],
 					['frog',3],['tadpole',3],
-					['bird',4],['chick',4] ];
+					['bird',4],['chick',4],
+					['pig',5],['piglet',5],
+					['deer',6],['fawn',6],
+					['bear',7],['cub',7] ];
 
 	function Ctor() {
 		this.values = function() {

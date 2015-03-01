@@ -10,10 +10,11 @@ ul {
 
 li {
 	border: 2px solid black;
-	width: 30px;
-	height: 50px;
+	width: 60px;
+	height: 100px;
 	display: inline-block;
-	margin: 5px 5px 5px 5px;
+	margin: 0px 10px 20px 10px;
+
 }
 
 .face-up {
@@ -24,10 +25,13 @@ li {
 	background-color: blue;
 }
 
-.matched {
-	background-color: black;
-}
-
 li.invisible {
 	display: none;
 }
+
+span {
+	display: inline;
+	background-color: red;
+
+}
+
