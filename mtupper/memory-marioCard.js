@@ -69,10 +69,23 @@ var MarioCard = (function() {
     ];
 
     var fullSet = [];
+    //var pairSets = [];
     for(var i = 0; i < numCards; i++) {
         fullSet.push(new MarioCard(i));
+        //var pair = [
+        //    charNames[i], (new MarioCard(i).rank()), (new MarioCard(i).imgURL())
+        //];
+        //pairSets.push(pair);
     }
     console.log(fullSet);
+    //console.log(pairSets);
+
+    //for(var i = 0; i < numCards; i++) {
+    //    var pair = [
+    //        charNames[i], fullSet[i].rank()
+    //    ];
+    //    console.log(pair);
+    //}
 
     // Class Constructor Methods
 

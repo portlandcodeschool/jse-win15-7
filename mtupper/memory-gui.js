@@ -40,15 +40,15 @@ var MemoryGUI = (function () {
 
     //...
 
-    function GuiCtor(container,game) {
+    function MemoryGUI(container,game) {
 
         // public instance methods:
         this.reset = function() {
 
         }
         this.show = function(where,what) {
-            $('#i' + where).attr("src", what);
-            $('#i' + where).removeClass('face-down').addClass('face-up');
+            $('#' + where).attr("src", what);
+            $('#' + where).removeClass('face-down').addClass('face-up');
             console.log(what);
         }
         this.removeSoon = function(whereArr) {
@@ -97,5 +97,5 @@ var MemoryGUI = (function () {
     function reportClick(evnt) {
         game.lift(parseInt(this.id));
     }
-    return GuiCtor;
+    return MemoryGUI;
 })();
