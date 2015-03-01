@@ -57,7 +57,7 @@ var MemoryGame = (function() {
 				displayPick = cardset.display(valPick);
 			if (picked === false) {
 				// no current face-up
-				picked = pick; //turn here face-up
+				picked = pick; //turn pick face-up
 			} else {
 				// check match with face-up
 				if (cardset.match(valPick,valueAt(picked))) {

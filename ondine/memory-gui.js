@@ -1,6 +1,6 @@
 var MemoryGUI = (function () {
 
-	function GuiCtor(container,game) {
+	function GUI(container, game) {
 
 		// public instance methods:
 
@@ -18,14 +18,15 @@ var MemoryGUI = (function () {
 			}
 		};
 
+		var	self = this;
+
 		this.show = function(where,what) { // show card face (card1 & card2)
 			var currentCard = document.getElementById(where);
 				currentCard.classList.add('faceup');
 				currentCard.classList.remove('facedown');
-				currentCard.innerHTML = what;
 			var cardContent = document.createTextNode(what);
 				currentCard.appendChild(cardContent);
-				//currentCard.innerHTML = '<p class="quote">val.name</p>';
+				currentCard.innerHTML = '<p class="quote">' + what.name +'</p>';
 		};
 		this.removeSoon = function(whereArr) { // matched cards hide or are removed - decoration
 			//...([a,b]) are matched & hidden
@@ -37,6 +38,7 @@ var MemoryGUI = (function () {
 
 		function clicked() {
 			game.lift(parseInt(this.id));
+			self.show(this.id, game.valueAt());
 		}
 	
 		var grid, listItem;
@@ -73,14 +75,5 @@ var MemoryGUI = (function () {
 		});
 	}
 
-	return GuiCtor;
+	return GUI;
 })();
-
-/*
-TESTING faceup in the console:
-
-var test = document.getElementById('memorygame');
-var testCard = document.getElementById('0');
-testCard
-testCard.className = 'faceup'
-*/
