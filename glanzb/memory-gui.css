@@ -1,7 +1,7 @@
 /* CSS for GUI...*/
 
 #memorygame {
-	border: 1px solid black;
+	
 }
 li {
 	list-style: none;
@@ -9,20 +9,26 @@ li {
 	margin: 5px;
 	width: 150px;
 	height: 250px;
-	border: 1px solid blue;
+	border: 1px solid black;
 	
 }
 
-.face-up{
-	background-color: red;
+
+
+.face-up, .face-down {
+	background-size: 100%;
+	margin: 2px;
+	padding: 2px;
+	border-radius: 10;
+	
 }
 
-.face-down{
-	background-color: blue;
+.face-down {
+	background-image: url(img/star_trek.jpg);
 }
 
 .matched {
-	background-color: 
+	visibility: hidden;
 }
 
 

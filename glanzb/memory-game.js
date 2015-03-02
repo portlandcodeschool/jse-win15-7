@@ -52,23 +52,35 @@ var MemoryGame = (function() {
 			if (there===here) return false;		// cant tur a card face up if it's already up. here and there are the 2 positions of the faceup
 
 			// must be a face-down card here; proceed...
+			
 			var valHere = valueAt(here);		// look at the card we have just lifted
-			if (there === false) {				// if there is no card faceup, then this one will be it
+			var what = cardset.display(valHere);	
+			if (there === false) {
 				// no current face-up
 				there = here; //turn here face-up
 			} else {
-				// check match with face-up			//
+				// check match with face-up
 				if (cardset.match(valHere,valueAt(there))) {
 					// match; remove both:
 					removeAt(here);
 					removeAt(there);
+					if (_gui)
+						_gui.removeSoon([here,there]);
 					//optional: report match
 					console.log("Match!")
+				} else {
+					if (_gui)
+						_gui.hideSoon([here,there]);
 				}
 				//either way, turn face-up to face-down:
 				there = false;
 			}
-			return cardset.display(valHere); 
+			if (_gui)
+				_gui.show(here,what);
+
+			
+			// _gui.show(here,what);
+			return what; 
 		}
 
 		// Make some functions public as instance methods:
@@ -76,6 +88,7 @@ var MemoryGame = (function() {
 		this.lift = lift;
 		this.faceupValue = faceupValue;
 		this.faceupWhere = faceupWhere;
+		this.valueAt = valueAt;
 		this.remaining = remaining;
 		this.gui = gui;
 		this.size = size;

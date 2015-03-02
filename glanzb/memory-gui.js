@@ -3,53 +3,57 @@ var MemoryGUI = (function () {
 	//...
 
 	function GuiCtor(container,game) {
+
+		var game = game;
 		
-		// if (typeof container === 'string') {
-		// 	container = document.getElementById('container');
-		// }
-		// this.el = function() {
-		// 	return container;
-		// }
+		if (typeof container === 'string') {
+			container = document.getElementById('container');
+		}
+		this.el = function() {
+			return container;
+		}
 
 		// public instance methods:
+		
 		this.reset = function() {		// reset method of the gui constructor, property
-			          
-			//. button on click apply attr all face down..
-			//game and gui reset
-			var allFaceUp = document.getElementsByClassName('face-up');
-			for (var i = 0; i < allFaceUp.length(); ++i) {
-				allFaceUp[i].classList.remove('face-up');
-				allFaceUp[i].classList.add('face-down');
-
-			};	// allFaceUp[i] is a dom element, instance in the array
-			
+			  render(); 
+			  game.reset();
 		}
 		this.show = function(where,what) {	// the gui recieves the where and what, trusts the sorce
 			var currentCard = document.getElementById(where);	// gets the id from the memory game
-			currentCard.classList.remove('face-down');
+			// alert(what);
 			currentCard.classList.add('face-up');
-			var cardText = document.createTextNode(what); 
-			currentCard.appendChild(cardText);
+			currentCard.classList.remove('face-down');
+			currentCard.innerHTML = "<img src='img/" + what + "-star.jpeg' class='face-up'>";
 			// game.lift value , lift knows the place and value
-			//... gui.show, what is the value
-			//cardset.display
+
 		}
-		this.removeSoon = function(whereArr) {
-			//...they have been matched, hide them
-			// where arr 
-			// if (card1[1] where === card2[1] where) {
-			// 	removeSoon
-			// };
+
+		this.removeSoon = function(whereArr) {// gets the array from lift
+			window.setTimeout(function() {
+				var card01 = document.getElementById(whereArr[0]);
+				var card02 = document.getElementById(whereArr[1]);
+				console.log(whereArr);
+				card01.classList.add('matched');
+				card02.classList.add('matched');
+			}, 1000);
 		}
 		this.hideSoon = function(whereArr) {
-			//... mismatch
-			// if (card 1(val) !=== ) {
-			// 	turn facedown (change css attr on it)
-			// };
+				window.setTimeout(function() {
+				var card01 = document.getElementById(whereArr[0]);
+				var card02 = document.getElementById(whereArr[1]);
+				card01.classList.add('face-down');
+				card02.classList.add('face-down');
+				card01.innerHTML = ""
+				card02.innerHTML = ""
+			}, 1000);
 		}
 		function clicked(){
 			console.log(this.id);
 			game.lift(parseInt(this.id));
+			// show(parseInt(this.id),game.valueAt(parseInt(this.id)));
+			
+
 		}
 
 
@@ -61,29 +65,35 @@ var MemoryGUI = (function () {
 			container.innerHTML = ' ';
 
 			var grid = document.createElement('ul');
-
 			for (var i = 0; i < game.size(); ++i) {
 				listItem = document.createElement('li');
 				grid.appendChild(listItem);
 				listItem.setAttribute('id',i)
 				listItem.onclick = clicked;
 				listItem.classList.add('face-down')
+
+				
 			}
 
 			container.appendChild(grid);
-
-			var footer = document.getElementById('footer');
-			var button = document.createElement('button');
-			var text = document.createTextNode("Reset");       
-            button.appendChild(text);                                
-            footer.appendChild(button);
+				if (document.getElementById('footer') == undefined) {
+					var footer = document.createElement('footer');
+					container.appendChild(footer)
+					// document.getElementById('footer');
+					var button = document.createElement('button');
+					var text = document.createTextNode("Reset");       
+		            button.appendChild(text);                                
+		            footer.appendChild(button);	
+					} else {
+						return;
+					}
+		
             button.onclick = containerReset;
 		}
-
 		render();
-
 	}
 
 	return GuiCtor;
 })();
 // has to be generic
+
