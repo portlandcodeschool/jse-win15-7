@@ -38,7 +38,7 @@ var MemoryGUI = (function () {
 					$('#' + x).attr('class', 'invisible');
 					$('ul').nextAll('p').remove();
 				});
-			}, 1000);
+			}, 2000);
 		}
 
 		var clicked = function() {
@@ -69,10 +69,7 @@ var MemoryGUI = (function () {
 			var footer = document.getElementById('footer');
 			var button = document.createElement('button');
 			var text = document.createTextNode('Reset');
-			footer.appendChild(button);
-			button.appendChild(text);
-			button.onclick = callReset;
-
+			
 
 		}
 		render();
