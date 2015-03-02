@@ -21,10 +21,16 @@ var MemoryGUI = (function () {
                     resetAt(where);
             }
         };
-        this.show = function(where, card) { // display card face
-            $findCell(where)
-                .attr('value',card)
-                .addClass('faceup');
+
+        this.show = function(where, clicked) { // display card face
+            var $card = $findCell(where);
+                $card.removeClass('facedown');
+                if (clicked.endsWith('jpg')) {
+                    $card.html('<img src="images/' + clicked + '"/>').addClass('cardImage');
+                } else {
+                    $card.addClass('cardQuote')
+                         .html('<p class="quote">' + clicked + '</p>');
+                }                  
         };
         this.removeSoon = function(locs) {
             window.setTimeout(function() {
@@ -39,22 +45,25 @@ var MemoryGUI = (function () {
 
         // ---- Private helper functions ----
         function hideAt(where) {
-            $findCell(where).removeClass('faceup');
-            // cell.removeAttribute('value');
-            // Leaving the value attribute in place is harmless,
-            //  but it does afford cheating by inspecting face-down cards.
+            $findCell(where)
+                .removeClass('cardQuote')
+                .html('')
+                .addClass('facedown');
         }
         function removeAt(where) {
             $findCell(where).addClass('matched');
         }
         function resetAt(where) {
             $findCell(where)
-                .removeClass('faceup')
-                .removeClass('matched');
+                .removeClass('cardQuote')
+                .removeClass('matched')
+                .html('')
+                .addClass('facedown');
         }
 
         function makeID(where) {// given a number, generate an id
-            return 'board'+_guiID+'cell'+where;
+            return 'cell'+where;
+            // return 'board'+_guiID+'cell'+where; // for multiple boards
         }
 
         function $findCell(where) {
@@ -70,6 +79,7 @@ var MemoryGUI = (function () {
             var makeCell = function(where) {
                 return $('<div>')
                         .attr('id', makeID(where))
+                        .addClass('generic')
                         .addClass('facedown')
                         .on('click',function() {
                             _game.lift(where);

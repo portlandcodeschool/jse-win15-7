@@ -13,8 +13,13 @@
 
 body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  background-color: rgb(222,242,250);
+  background-image: url(../images/map-westeros.jpg);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: cover;
+  font-size: 16px;
   color: rgb(0,81,133);
+  margin: 0;
 }
 
 #header, #footer {
@@ -23,13 +28,20 @@ body {
 
 h1 {
   font-family: 'dobkinplain';
-  font-size: 4em;
+  font-size: 6em;
   text-align: center;
+  color: rgb(188, 155, 106);
+  background-color: rgba(255,255,255,.2);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px 200px 10px 0px;
+  width: 100%;
 }
 
 h2, h3, h4 {
   font-family: 'Open Sans';
   font-weight: 600;
+  color: rgb(234,223,196);
   text-align: center;
 }
 
@@ -39,7 +51,6 @@ p {
   font-size: 1em;
   line-height: 1.4em;
   text-align: center;
-  margin-bottom: 2em;
 }
 
 .memoryboard {
@@ -49,36 +60,42 @@ p {
   display: inline-block;
 }
 
-.facedown { 
+.generic { 
   width: 225px;
   height: 315px;
   margin: 8px;
   float: left;
-  background-image: url(../images/throne.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
   border: 1px solid rgb(0,81,133);
   border-radius: 6px;
 }
 
-.faceup {
-  background-color: rgb(0,81,133);
-  border: 1px solid #333;
-  border-radius: 6px;
+.facedown {
+  background-image: url(../images/throne.jpg);
+  border: 1px solid rgb(0,81,133);
 }
-
-.faceup:before {
-  content:attr(value); /* shows card face value */
+/* add rules for responsize sizing here */
+.cardImage {
+  width: 100%;
+  max-width: 225px;
+  border: 1px solid rgba(91,191,237,.7);
+}
+/* display quote text over color background */
+.cardQuote {
+  background-color: rgb(5,41,74);
+  border: 1px solid rgba(91,191,237,.7);
 }
 
 .quote {
   font-family: 'Open Sans';
-  font-size: 18px;
+  font-size: 1.4em;
   font-weight: 300;
   color: #fff;
+  line-height: 2em;
   text-align: center;
-  margin: 1em;
-  vertical-align: middle;
+  padding: 12px 20px;
+  margin-top: 10px;
 }
 
 .matched {
@@ -91,7 +108,7 @@ button {
   font-weight: 600;
   font-size: 16px;
   padding: 8px;
-  background-color: rgb(0,81,133);
-  color: white;
+  background-color: rgb(91,191,237);
+  color: rgb(0,33,87);
   border-radius: 8px;
 }

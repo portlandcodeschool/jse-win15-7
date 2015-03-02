@@ -66,8 +66,6 @@ var MemoryGame = (function() {
 					removeAt(picked);
 					if (_gui)
 						_gui.removeSoon([pick,picked]);
-					//optional: report match
-					console.log("Match!");
 				} else {
 					if (_gui)
 						_gui.hideSoon([pick,picked]);
@@ -88,7 +86,7 @@ var MemoryGame = (function() {
 		this.remaining = remaining;
 		this.gui = gui;
 		this.size = size;
-	} // end ctor
+	} // end constructor
 
 	// Private Functions shared by all boards:
 	// these could be placed inside ctor,
