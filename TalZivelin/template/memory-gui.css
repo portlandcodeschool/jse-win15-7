@@ -1,0 +1,38 @@
+/* CSS for GUI...*/
+
+body	{
+	background:url(img/page-bg.jpg) no-repeat #000000;
+	background-size:cover;
+}
+#memorygame {
+}
+
+ul	{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+	
+li	{
+	float:left;
+	width:130px;	
+	height:200px;
+	margin:10px
+}
+
+
+
+.face-up {
+}
+
+.matched {
+	background-color: #0AEF1E
+}
+
+.face-down {
+	background:url(img/background.jpg) no-repeat;
+}
+
+.removeCard	{
+	display:none;
+}
