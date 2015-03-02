@@ -1,0 +1,48 @@
+/* CSS for GUI...*/
+
+#memorygame {
+	/* ... */
+}
+
+.btn_reset { 
+	margin-top: 10px;
+	background: white;
+	width: 100px;
+	height: 50px;
+	color: black;
+	border: 2px solid black;
+	font-size: 2em;
+	box-shadow: 5px 5px 5px #888888;
+
+}
+
+.card {
+	background-image: url('imgs/card_back.jpg');
+	width: 100px;
+	height: 200px;
+	
+}
+
+td {
+	
+	width: 100px;
+	height: 200px;
+}
+
+.card_down {
+	background-image: url('imgs/card_back.jpg');
+}
+
+/*.card_up {
+	background: orange;
+	color: white;
+}*/
+
+.removeCard {
+	visibility: hidden;
+}
+
+.cardImage {
+	width: 100px;
+	height: 200px;
+}

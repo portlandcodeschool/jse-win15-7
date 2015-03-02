@@ -2,18 +2,24 @@
 
 var MemoryCards = (function() {
 	function Ctor() {
-		//var food = ['apple','artichoke','banana','blueberry','carrot','cranberry'];
-		var food = ['apple','apple','banana','banana','carrot','carrot'];
+		
+		var pre_path = 'imgs/'
+		var file_ext = 'jpg'
+		var cards = ['imgs/feather.jpg',
+		'imgs/feather.jpg',
+		'imgs/limb.jpg',
+		'imgs/limb.jpg',
+		'imgs/child.jpg',
+		'imgs/child.jpg', 
+		'imgs/dog.jpg',
+		'imgs/dog.jpg'];
 
 		this.values = function() {
-			return food.slice(); //return copy of values
+			return cards.slice(); //return copy of values
 		}
 
 		this.match = function(a,b) {
 			
-			console.log(a)
-			console.log(b)
-			//return str1[0]===str2[0]; //match if same initial letter
 			return a===b;
 		}
 
