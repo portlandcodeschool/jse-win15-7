@@ -11,10 +11,10 @@ var MemoryCards = (function() {
             return cards.slice();
         };
         this.match = function (pair1, pair2) {
-            return (pair1[1] === pair2[1]);
+            return (pair1.rank() === pair2.rank());
         };
         this.display = function (val) {
-            return val[0];
+            return val.imgURL();
         };
     }
 	return MemoryCards;
