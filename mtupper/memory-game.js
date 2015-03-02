@@ -13,7 +13,7 @@ var MemoryGame = (function() {
             slots = cardset.values();
             length = slots.length;
             there = false;
-            shuffle(slots);
+            //shuffle(slots);
         };
 		var remainsAt = function(where) { //boolean
             return slots[where] !== undefined;
@@ -34,12 +34,21 @@ var MemoryGame = (function() {
             return Object.keys(slots).map(Number);
         };
 		var lift = function(here) {
-            if (!isValid(here, length)) return false;
-            if (!remainsAt(here)) return false;
-            if (there === here) return false;
+            if (!isValid(here, length)) {
+                console.log("a");
+                return false;
+            }
+            if (!remainsAt(here)) {
+                console.log("b");
+                return false;
+            }
+            if (there === here) {
+                console.log("c");
+                return false;
+            }
 
             // must be a face-down card here; proceed...
-            var valHere = valueAt(there);
+            var valHere = valueAt(here);
             if (there === false) {
                 // no current face-up
                 there = here; // turn here face-up
@@ -73,16 +82,20 @@ var MemoryGame = (function() {
         this.faceupValue = faceupValue;
         this.faceupWhere = faceupWhere;
         this.remaining = remaining;
-	}
+
+        reset();
+
+    }
 
 	// some of those instance methods could instead be shared
 	// by installing them in GameCtor.prototype
 	// ...
 
     var isValid = function(where, length) {
+        console.log(where, length);
         return (typeof where === 'number') &&
             (where % 1 === 0) &&
-            (where > 0) &&
+            (where >= 0) &&
             (where < length)
     };
     var shuffle = function(array) {
@@ -98,5 +111,6 @@ var MemoryGame = (function() {
             array[i] = temp;
         }
     };
+
 	return MemoryGame;
 })();

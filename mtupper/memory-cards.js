@@ -14,7 +14,7 @@ var MemoryCards = (function() {
             return (pair1.rank() === pair2.rank());
         };
         this.display = function (val) {
-            return val.imgURL();
+            return val.charName();
         };
     }
 	return MemoryCards;
