@@ -6,7 +6,7 @@ var MemoryCards = (function() {
 									{name: 'daenerys', cardface: 'daenerys.jpg', person: 'Daenerys Targaryen'},
 									{name: 'daenerys', cardface: 'I will answer injustice with justice.'},
 									{name: 'cersei', cardface: 'cersei.jpg', person: 'Cersei Lannister'},
-									{name: 'cersei', cardface: 'When you play the game of thrones you win, or you die. \nThere is no middle ground.'},
+									{name: 'cersei', cardface: 'When you play the game of thrones you win, or you die. There is no middle ground.'},
 									{name: 'arya', cardface: 'arya.jpg', person: 'Arya Stark'},
 									{name: 'arya', cardface: 'Anyone can be killed.'},
 									{name: 'sansa', cardface: 'sansa.jpg', person: 'Sansa Stark'},
@@ -20,7 +20,13 @@ var MemoryCards = (function() {
 									{name: 'melisandre', cardface: 'melisandre.jpg', person: 'Melisandre'},
 									{name: 'melisandre', cardface: 'Death by fire is the purest death.'},
 									{name: 'olenna', cardface: 'olenna.jpg', person: 'Olenna Tyrell'},
-									{name: 'olenna', cardface: 'A golden rose, growing strong? \nOh, yes, that strikes fear in the heart!'}
+									{name: 'olenna', cardface: 'A golden rose, growing strong? Oh, yes, that strikes fear in the heart!'},
+									{name: 'jaime', cardface: 'jaime.jpg', person: 'Jaime Lannister'},
+									{name: 'jaime', cardface: 'There are no men like me, only me.'},
+									{name: 'tywin', cardface: 'tywin.jpg', person: 'Tywin Lannister'},
+									{name: 'tywin', cardface: 'Any man who must say \"I am the king\" is no true king.'},
+									{name: 'tyrion', cardface: 'tyrion.jpg', person: 'Tyrion Lannister'},
+									{name: 'tyrion', cardface: 'Never forget what you are. The rest of the world will not. Wear it like armor.'}
 					 ];
 
 		this.values = function() {
