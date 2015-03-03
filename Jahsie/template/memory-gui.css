@@ -1,0 +1,111 @@
+/* CSS for GUI...*/
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+
+html {
+	font-size: 12px;
+}
+
+@media screen and (min-width: 900px){
+  html{
+    font-size: 13px;
+  }
+}
+
+
+body {
+	font-family: 'Lato', sans-serif;
+	color: grey;
+	margin: 0px;
+	height: 100%
+}
+
+h1 {
+	font-weight: 900;	
+}
+
+#intro {
+	box-sizing: border-box;
+	position: absolute;
+	display: inline-block;
+	width: 20%;
+	float: left;
+	text-align: center;
+	height: 100%;
+	padding: 3% 0px 0px 3%;
+}
+
+.quote {
+	font-style: italic;
+	font-size: 1rem;
+	vertical-align: bottom;
+/*	FIX THIS!*/
+	margin-top: 100%;
+	position: relative;
+	bottom: 0;
+}
+
+#memorygame {
+	height: 100%;
+	box-sizing: border-box;
+	display: inline-block;
+	float: right;
+	width: 80%;
+	margin: auto;
+ 	transform: translateY(-50%);*/
+	/*max-width: 1300px;*/
+	text-align: center;
+	position: relative;
+	top: 50%;
+	padding: 3% 3% 0px 3%;
+}
+
+button {
+	font-size: 15px;
+	background-color: transparent;
+	height: 50px;
+	width: 80px;
+	color: grey;
+	border: 3px solid grey;
+}
+
+button:hover {
+	background-color: grey;
+	color: white;
+}
+
+.cardDiv:hover {
+	opacity: 50%;
+	outline: 1px solid white;
+	outline-offset: -10px; 
+}
+
+img {
+/*	max-height: 100%;*/
+	max-width: 100%;
+
+}
+
+.cardset {
+	width: 100%;
+}
+
+.cardDiv {
+
+	background-image: url(img/Back.png);
+	background-size: contain;
+	background-repeat: none;
+	display: inline-block;
+	width: 20%;
+}
+
+.face-down img {
+	visibility: hidden;
+}
+
+.face-up {
+/*	background-image: url(img/Back.png);*/
+}
+
+
+
+
