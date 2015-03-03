@@ -1,55 +1,19 @@
-/* var MemoryGUI = (function () {
-
-	//...
-
-	function MemoryGUI(container,game) {
-        if (typeof container === 'string') {
-            var $container = $('#' + container);
-        }
-        if (!($container instanceof HTMLElement)) {
-            return {};
-        }
-        this.$el() = function() {
-            return $container;
-        };
-
-		// public instance methods:
-		this.reset = function() {
-
-			//...
-		}
-		this.show = function(where,what) {
-			//...
-		}
-		this.removeSoon = function(whereArr) {
-			//...
-		}
-		this.hideSoon = function(whereArr) {
-			//...
-		}
-
-		// Do some initial setup and rendering...
-	}
-
-	return MemoryGUI;
-})();
-
-*/
-
 var MemoryGUI = (function () {
 
-    //...
-
     function MemoryGUI(container,game) {
+        // constructor variable
+        var numGuis = 0; //counts number of GUI instances
 
         // public instance methods:
         this.reset = function() {
 
         }
         this.show = function(where,what) {
-            $('#' + where).attr("src", what);
+            console.log(where+", "+what.imgURL());
+            var $cardFace = $('#' + where);
+            $cardFace.attr("src", what.imgURL());
             $('#' + where).removeClass('face-down').addClass('face-up');
-            console.log(what);
+            console.log(what.charName());
         }
         this.removeSoon = function(whereArr) {
             //...
@@ -66,16 +30,16 @@ var MemoryGUI = (function () {
             }
         }
 
-        var $contain;
+        var $container;
         if (typeof container === "string") {
-            $contain = $('#' + container);
+            $container = $('#' + container);
         }
 
         var numRows = 5;
         var numCols = 10;
         var cell = 0;
         var $table = $('<table>', {id:'table'});
-        $contain.append($table);
+        $container.append($table);
 
         for (var r = 0; r < numRows; r++) {
             var $newRow = $('<tr>');
@@ -85,7 +49,7 @@ var MemoryGUI = (function () {
                     break;
                 }
                 var $newCell = $('<td>', {id:cell});
-                var $loadCard = $('<img>', {id:String('i' + cell), width:'60px', height:'90px', src:'img/cardback.jpg'});
+                var $loadCard = $('<img>', {id:String('i' + cell), width:'100px', height:'125px', src:'img/cardback.jpg'});
                 //$loadCard.addClass('face-down');
                 $newCell.append($loadCard).click(reportClick);
                 cell++;
@@ -94,8 +58,11 @@ var MemoryGUI = (function () {
         }
 
     }
+
     function reportClick(evnt) {
         game.lift(parseInt(this.id));
     }
+
     return MemoryGUI;
+
 })();

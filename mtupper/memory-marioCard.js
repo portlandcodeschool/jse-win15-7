@@ -60,12 +60,13 @@ var MarioCard = (function() {
     // Data sets
 
     var charNames = [
-        'Mario', 'Luigi', 'Wario', 'Waluigi', 'Baby Mario', 'Baby Luigi', 'Seven', 'Eight', 'Nine',
-        'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen',
-        'Twenty', 'Twenty-one', 'Twenty-two', 'Twenty-three', 'Twenty-four', 'Twenty-five', 'Twenty-six', 'Twenty-seven', 'Twenty-eight', 'Twenty-nine',
-        'Thirty', 'Thirty-one', 'Thirty-two', 'Thirty-three', 'Thirty-four', 'Thirty-five', 'Thirty-six', 'Thirty-seven', 'Thirty-eight', 'Thirty-nine',
-        'Forty', 'Forty-one', 'Forty-two', 'Forty-three', 'Forty-four', 'Forty-five', 'Forty-six', 'Forty-seven', 'Forty-eight', 'Forty-nine',
-        'Fifty'
+        'Mario', 'Luigi', 'Wario', 'Waluigi', 'Baby Mario', 'Baby Luigi', 'Lakitu', 'Shy Guy', 'King Bob omb ',
+        'Bob omb', 'Princess Peach', ' Princess Daisy', 'Donky Kong', 'Diddie Kong', 'Baby Peach', 'Baby Daisy',
+        'Wiggler', 'Mole', 'Red Bob omb', 'Hammer Bro', 'Princess Roselina', 'Yoshi', 'Dixy Kong', 'Donkey Kong Jr.',
+        'Koopa Troopa', 'Para-Koopa', 'Cheep-Cheep', 'Blooper', 'Bommerang Bro', 'Fire Bro', 'Birdo', 'Toad',
+        'Funky Kong', 'Bowser', 'Dry Bones', 'Magikoopa', 'Boo', 'King Boo', 'Bullet Bill', 'Thwomp', 'Toadette',
+        'Toadsworth', 'Bowser Jr.', 'Dry Bowser', 'Goomba', 'Para-Goomba', 'Dino Piranha', 'Piranha Plant',
+        'Metal Mario', 'R.O.B'
     ];
 
     var fullSet = [];

@@ -18,7 +18,7 @@ table {
 }
 
 table tr td {
-	background: url("img/MarioCards/mushroomCards.png");
+/*	background: url("img/MarioCards/mushroomCards.png"); */
 	background-size: 75px 100px;
 	background-repeat: no-repeat;
 

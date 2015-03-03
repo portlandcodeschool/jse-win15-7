@@ -1,13 +1,13 @@
 var MemoryGame = (function() {
 
 	function MemoryGame(cardset) {
+
+        // constructor variables
         var slots,
             length,
             there;
 
-		// some of the instance methods may need to be
-		// specific to each instance
-		// ...
+		// instance methods
 
 		var reset = function() {
             slots = cardset.values();
@@ -39,11 +39,11 @@ var MemoryGame = (function() {
                 return false;
             }
             if (!remainsAt(here)) {
-                console.log("b");
+                console.log("no card there");
                 return false;
             }
             if (there === here) {
-                console.log("c");
+                console.log("pick a different card");
                 return false;
             }
 
@@ -61,6 +61,8 @@ var MemoryGame = (function() {
                     removeAt(there);
                     // testing report match to console
                     console.log("match!");
+                } else {
+                    console.log('not a match');
                 }
                 // either way, turn face-up to face-down
                 there = false;
@@ -87,17 +89,14 @@ var MemoryGame = (function() {
 
     }
 
-	// some of those instance methods could instead be shared
-	// by installing them in GameCtor.prototype
-	// ...
-
     var isValid = function(where, length) {
-        console.log(where, length);
+        console.log("isValid(where, length) ", where, length);
         return (typeof where === 'number') &&
             (where % 1 === 0) &&
             (where >= 0) &&
             (where < length)
     };
+
     var shuffle = function(array) {
         // Knuth-Fisher-Yates, modified from http://bost.ocks.org/mike/shuffle/
         var end = array.length, temp, i;
@@ -113,4 +112,5 @@ var MemoryGame = (function() {
     };
 
 	return MemoryGame;
+
 })();
