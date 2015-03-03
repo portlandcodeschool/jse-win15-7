@@ -1,0 +1,52 @@
+/*
+ * Created by mtupper on 2/22/15.
+ */
+
+#container {
+    width: 100%;
+}
+
+#content {
+    margin: 50px 0 20px 0;
+    padding: 10px;
+}
+
+table {
+	border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table tr td {
+/*	background: url("img/MarioCards/mushroomCards.png"); */
+	background-size: 75px 100px;
+	background-repeat: no-repeat;
+
+	border: 1px solid black;
+	width: 95px;
+	height: 120px;
+	padding: 10px;
+	margin: 0;
+}
+
+table tr td img:hover {
+	transform: scale(1.25, 1.25);
+}
+
+.face-up {
+	visibility: visible;
+}
+
+.face-down {
+	visibility: hidden;
+}
+
+.matched {
+
+}
+
+#memorygame {
+    margin: 0 auto 0 auto;
+	/* ... */
+}
+
