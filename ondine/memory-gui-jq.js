@@ -25,8 +25,10 @@ var MemoryGUI = (function () {
         this.show = function(where, clicked) { // display card face
             var $card = $findCell(where);
                 $card.removeClass('facedown');
-                if (clicked.endsWith('jpg')) {
-                    $card.html('<img src="images/' + clicked + '"/>').addClass('cardImage');
+                if (clicked.endsWith('jpg')) { // alternate: (clicked.contains('jpg'))
+                    /* either version works in Firefox; neither works in Chrome */
+                    $card.html('<img src="images/' + clicked + '"/>')
+                        .addClass('cardImage');
                 } else {
                     $card.addClass('cardQuote')
                          .html('<p class="quote">' + clicked + '</p>');
@@ -37,7 +39,7 @@ var MemoryGUI = (function () {
                 locs.forEach(removeAt);
             }, 1000);
         };
-            this.hideSoon = function(locs) {
+        this.hideSoon = function(locs) {
             window.setTimeout(function() {
                 locs.forEach(hideAt);
             }, 1000);

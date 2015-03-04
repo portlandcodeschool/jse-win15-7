@@ -23,18 +23,19 @@ body {
 }
 
 #header, #footer {
-  max-width: 90%;
+  clear: both;
+  margin: 0 auto;
 }
 
 h1 {
   font-family: 'dobkinplain';
-  font-size: 6em;
+  font-size: 5em;
   text-align: center;
   color: rgb(188, 155, 106);
   background-color: rgba(255,255,255,.2);
   margin-top: 30px;
   margin-bottom: 30px;
-  padding: 10px 200px 10px 0px;
+  padding: 20px 10px 20px 10px;
   width: 100%;
 }
 
@@ -47,55 +48,58 @@ h2, h3, h4 {
 
 p {
   font-family: 'Open Sans';
-  font-weight: 400;
+  font-weight: 300;
   font-size: 1em;
   line-height: 1.4em;
   text-align: center;
 }
 
 .memoryboard {
-  max-width: 90%;
-  margin: 2em auto 2em 3em;
-  padding: 0;
-  display: inline-block;
+  margin: 3em;
 }
 
 .generic { 
   width: 225px;
   height: 315px;
   margin: 8px;
+  display: inline-block;
   float: left;
-  background-size: 100%;
-  background-repeat: no-repeat;
   border: 1px solid rgb(0,81,133);
   border-radius: 6px;
 }
 
 .facedown {
   background-image: url(../images/throne.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
   border: 1px solid rgb(0,81,133);
+  border-radius: 6px;
 }
 /* add rules for responsize sizing here */
-.cardImage {
+
+.cardImage img {
   width: 100%;
-  max-width: 225px;
-  border: 1px solid rgba(91,191,237,.7);
+  border-radius: 6px;
+}
+.cardImage {
+  border: 1px solid rgb(0,81,133);
+  border-radius: 6px;
 }
 /* display quote text over color background */
 .cardQuote {
   background-color: rgb(5,41,74);
   border: 1px solid rgba(91,191,237,.7);
+  border-radius: 6px;
 }
 
 .quote {
   font-family: 'Open Sans';
-  font-size: 1.4em;
+  font-size: 1.3em;
   font-weight: 300;
   color: #fff;
-  line-height: 2em;
+  line-height: 1.8em;
   text-align: center;
-  padding: 12px 20px;
-  margin-top: 10px;
+  padding: 10%;
 }
 
 .matched {
@@ -103,7 +107,7 @@ p {
 }
 
 button {
-  margin: 2em 2em 2em 4em;
+  margin: 3em auto 2em 3.8em;
   font-family: 'Open Sans';
   font-weight: 600;
   font-size: 16px;
