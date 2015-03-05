@@ -25,13 +25,12 @@ var MemoryGUI = (function () {
         this.show = function(where, clicked) { // display card face
             var $card = $findCell(where);
                 $card.removeClass('facedown');
-                if (clicked.endsWith('jpg')) { // alternate: (clicked.contains('jpg'))
-                    /* either version works in Firefox; neither works in Chrome */
-                    $card.html('<img src="images/' + clicked + '"/>')
-                        .addClass('cardImage');
-                } else {
+                if (clicked.charAt(clicked.length-1) == '.') {
                     $card.addClass('cardQuote')
                          .html('<p class="quote">' + clicked + '</p>');
+                } else {
+                    $card.html('<img src="images/' + clicked + '"/>')
+                        .addClass('cardImage');
                 }                  
         };
         this.removeSoon = function(locs) {
