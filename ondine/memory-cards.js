@@ -26,7 +26,7 @@ var MemoryCards = (function() {
 									{name: 'tywin', cardface: 'tywin.jpg', person: 'Tywin Lannister'},
 									{name: 'tywin', cardface: 'Any man who must say &#8220;I am the king&#8221; is no true king.'},
 									{name: 'tyrion', cardface: 'tyrion.jpg', person: 'Tyrion Lannister'},
-									{name: 'tyrion', cardface: 'I demand a trial by combat.'},
+									{name: 'tyrion', cardface: 'Save it for Joffrey; he loves a good grovel.'},
 									{name: 'jon', cardface: 'jon.jpg', person: 'Jon Snow'},
 									{name: 'jon', cardface: 'I never met my mother.'}
 					 ];
