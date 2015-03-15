@@ -1,0 +1,25 @@
+
+
+body {color: red}
+
+table { border-collapse: collapse; background-color: gray; empty-cells:show;  }
+
+td {border: 2px solid blue; width: 67px; height: 50px; font-weight: bolder; color: red; background: white}
+
+p {color: blue}
+
+.facedown {color: gray; background-color: red}
+.faceup {color: red}
+.matched {color: green; background-color:gray}
+
+.button {
+width: 60px; 
+height: 35px; 
+border-radius: 8px;
+background-color: blue; 
+color: orange; 
+font-size: 9px; 
+font-weight: bold; 
+padding:5px 10px; 
+
+}
